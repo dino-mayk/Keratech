@@ -1,0 +1,21 @@
+#text {
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    width: 0;
+}
+
+.typing {
+    animation: typing 3s steps(30, end) forwards, cursor 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes cursor {
+    from { border-color: transparent; }
+    to { border-color: orange; }
+}

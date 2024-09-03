@@ -3,5 +3,14 @@
 {% load static %}
 
 {% block content %}
-<button type="button" class="btn btn-primary">Primary</button>
+
+
+<link href="{% static 'apps/homepage/index.css' %}" rel="stylesheet">
+
+<div class="container">
+    <div id="text" class="typing">Керамика вдохновляет</div>
+</div>
+
+<script src="{% static 'apps/homepage/index.js' %}"></script>
+
 {% endblock %}
