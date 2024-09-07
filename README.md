@@ -9,7 +9,7 @@
 
 ### Clone the repository:
 ```bash
-git clone https://github.com/dino-mayk/GoToHome.git
+git clone https://github.com/dino-mayk/Keratech.git
 ```
 
 ### Create a virtual environment:

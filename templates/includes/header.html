@@ -2,17 +2,16 @@
 
 <link href="{% static 'apps/includes/header.css' %}" rel="stylesheet">
 
-<div class="container">
-  <header class="d-flex flex-wrap align-items-center py-3 mb-4">
-    <a href="/">
+<header class="d-flex flex-wrap align-items-center">
+  <div class="absolute-box">
+    <a href="/" class="logo">
       <img src="{% static 'favicon_package/logo.jpg' %}" width="100px" height="100px">
     </a>
-
-    <ul class="nav nav-pills">
-      <li class="nav-item"><a href="#" class="nav-link">Компания</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Продукты</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Философия</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Контакты</a></li>
-    </ul>
-  </header>
-</div>
+  </div>
+  <ul class="nav nav-pills">
+    <li class="nav-item"><a href="#" class="nav-link">Компания</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Продукты</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Философия</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Контакты</a></li>
+  </ul>
+</header>
