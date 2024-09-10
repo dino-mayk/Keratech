@@ -14,13 +14,14 @@ header {
 }
 
 .logo-container {
-    float: left;
-    margin-right: 20px;
+    display: inline;
+    margin-right: 200px;
+    margin-left: 20px;
 }
 
 .logo-container img {
-    width: 150px;
-    height: 150px;
+    width: 60px;
+    height: 60px;
 }
 
 .header-container {
@@ -36,7 +37,7 @@ header {
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.5s ease-out;
-    position: absolute;
+    position: static;
     left: 0;
     width: 100%;
     background-color: white;
