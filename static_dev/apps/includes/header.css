@@ -8,7 +8,8 @@ header {
     color: black;
     padding: 20px;
     text-align: left;
-    position: relative;
+    position: sticky;
+    top: 0px;
     cursor: pointer;
 }
 
