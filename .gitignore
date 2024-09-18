@@ -3,3 +3,4 @@ venv
 .env
 static
 db.sqlite3
+migrations
