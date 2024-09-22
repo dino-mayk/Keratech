@@ -2,39 +2,19 @@
 
 <link href="{% static 'apps/includes/header.css' %}" rel="stylesheet">
 
-<header>
-  <div class="logo-container">
-    <img src="{% static 'favicon_package/logo.jpg' %}">
-  </div>
-  <div class="header-container">
-    <h4 class="header-title">Заголовок 1</h4>
-    <div class="dropdown dropdown-1">
-      <nav class="dropdown-content">
-        <a href="#link1">Ссылка 1.1</a>
-        <a href="#link2">Ссылка 1.2</a>
-      </nav>
-    </div>
-  </div>
+<div class="container-fluid">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <img src="{% static 'favicon_package/logo.jpg' %}" width="65px" height="65px">
+    </a>
 
-  <div class="header-container">
-    <h4 class="header-title">Заголовок 2</h4>
-    <div class="dropdown dropdown-2">
-      <nav class="dropdown-content">
-        <a href="#link3">Ссылка 2.1</a>
-        <a href="#link4">Ссылка 2.2</a>
-      </nav>
-    </div>
-  </div>
-
-  <div class="header-container">
-    <h4 class="header-title">Заголовок 3</h4>
-    <div class="dropdown dropdown-3">
-      <nav class="dropdown-content">
-        <a href="#link5">Ссылка 3.1</a>
-        <a href="#link6">Ссылка 3.2</a>
-      </nav>
-    </div>
-  </div>
-</header>
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="{% url 'homepage:index' %}" class="nav-link active" aria-current="page">Главная</a></li>
+      <li class="nav-item"><a href="{% url 'product:list' %}" class="nav-link">Продукты</a></li>
+      <li class="nav-item"><a href="{% url 'article:list' %}" class="nav-link">Посты</a></li>
+      <li class="nav-item"><a href="{% url 'about:index' %}" class="nav-link">О нас</a></li>
+    </ul>
+  </header>
+</div
 
 <script src="{% static 'apps/includes/header.js' %}"></script>

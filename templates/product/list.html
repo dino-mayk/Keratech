@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container m-2">
+    <div class="row justify-content-center">
+        {% for product in products %}
+            {% include 'includes/product_card.html' with product=product %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
