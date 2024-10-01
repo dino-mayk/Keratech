@@ -27,7 +27,6 @@ INSTALLED_APPS = [
 
     'homepage',
     'product',
-    'article',
     'about',
 ]
 
