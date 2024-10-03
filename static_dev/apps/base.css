@@ -1,7 +1,7 @@
 main {
     background-color: #57a0c8;
     font-family: 'Lato';
-    padding-top: 120px;
+    padding-top: 110px;
     ::selection {
         background-color: white;
     }

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/работник месяца/Никита Макакин.jpg">
+  <img src="/static_dev/favicon_package/logo.jpg">
 </p>
 
 <h3 align="center">KeraTech</h3>
