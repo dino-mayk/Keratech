@@ -4,6 +4,22 @@ from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
 from tinymce.models import HTMLField
 
+from product.managers import ProductGalleryManager
+
+
+class Type(models.Model):
+    title = models.CharField(
+        'Тип продукции',
+        max_length=150,
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Тип продукции'
+        verbose_name_plural = 'Типы продукции'
+
 
 class Product(models.Model):
     title = models.CharField(
@@ -20,9 +36,11 @@ class Product(models.Model):
         help_text='Загрузите картинку',
         null=True,
     )
-    type = models.CharField(
-        "Тип продукции",
-        max_length=150,
+    type = models.ForeignKey(
+        Type,
+        on_delete=models.CASCADE,
+        verbose_name="Тип продукции",
+        help_text='выберете тип продукции'
     )
 
     @property
@@ -69,7 +87,7 @@ class ProductGallery(models.Model):
         verbose_name="продукт",
         help_text='выберете продукт'
     )
-    #objects = PostsGalleryManager()
+    objects = ProductGalleryManager()
 
     @property
     def get_img(self):

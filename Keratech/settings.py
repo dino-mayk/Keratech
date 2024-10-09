@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'homepage',
     'product',
     'about',
+
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [

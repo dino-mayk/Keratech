@@ -1,10 +1,12 @@
 {% load static %}
 
-<div class="col card m-2" style="width: 18rem;">
+<link href="{% static 'apps/includes/product_card.css' %}" rel="stylesheet">
+
+<div class="col-4 card">
     <img src="{{ product.photo.url }}" class="d-block">
     <div class="card-body">
-    <h5 class="card-title">{{ post.title | truncatechars_html:20 }}</h5>
-    <p>{{ product.text | safe |truncatechars_html:40 }}</p>
+    <h5 class="card-title">{{ product.title | truncatechars_html:20 }}</h5>
+    <p>{{ product.text | safe |truncatechars_html:50 }}</p>
     <p><a class="btn btn-secondary" href="{% url 'product:detail' product.id %}">Подробнее</a></p>
     </div>
 </div>
