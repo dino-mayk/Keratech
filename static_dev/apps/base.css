@@ -1,6 +1,7 @@
+@import "https://fonts.fontstorage.com/import/bender.css";
 main {
-    background-color: #57a0c8;
-    font-family: 'Lato';
+    background-color: #5cb3e2;
+    font-family: 'Bender', Arial, sans-serif;
     padding-top: 130px;
     ::selection {
         background-color: white;

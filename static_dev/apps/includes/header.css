@@ -1,4 +1,6 @@
+@import "https://fonts.fontstorage.com/import/bender.css";
 header {
+    font-family: 'Bender', Arial, sans-serif;
     background-color: white;
     color: black;
     position: fixed;

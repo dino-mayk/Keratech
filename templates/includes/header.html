@@ -7,10 +7,10 @@
     <a href="/">
       <img src="{% static 'favicon_package/logo.jpg' %}" width="100px" height="100px">
     </a>
-  </div>
+  </div col-md-8 mx-auto>
   <ul class="col-5 nav nav-pills">
-    <li class="nav-item"><a href="{% url 'homepage:index' %}" class="nav-link active" aria-current="page">Главная</a></li>
-    <li class="nav-item"><a href="{% url 'product:list' %}" class="nav-link">Каталог</a></li>
-    <li class="nav-item"><a href="{% url 'about:index' %}" class="nav-link">О нас</a></li>
+    <li class="list-group list-group-horizontal-md"><a href="{% url 'homepage:index' %}" class="nav-link">Главная</a></li>
+    <li class="list-group list-group-horizontal-md"><a href="{% url 'product:list' %}" class="nav-link">Каталог</a></li>
+    <li class="list-group list-group-horizontal-md"><a href="{% url 'about:index' %}" class="nav-link">О нас</a></li>
   </ul>
 </header>
