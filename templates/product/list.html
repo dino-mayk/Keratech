@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<div class="row m-2">
+<div class="row justify-content-center m-2">
     {% for type, products in grouped_products.items %}
-        <h1>{{ type }}</h1>
+        <h1 class="text-center">{{ type }}</h1>
         {% for product in products %}
             {% include 'includes/product_card.html' with product=product %}
         {% endfor %}

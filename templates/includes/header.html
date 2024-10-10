@@ -11,6 +11,10 @@
   <ul class="col-5 nav nav-pills">
     <li class="list-group list-group-horizontal-md"><a href="{% url 'homepage:index' %}" class="nav-link">Главная</a></li>
     <li class="list-group list-group-horizontal-md"><a href="{% url 'product:list' %}" class="nav-link">Каталог</a></li>
-    <li class="list-group list-group-horizontal-md"><a href="{% url 'about:index' %}" class="nav-link">О нас</a></li>
+    {% with request.resolver_match.view_name as view_name %}
+      {% if view_name == 'homepage:index' %}
+        <li class="list-group list-group-horizontal-md"><a href="#about" class="nav-link">О нас</a></li>
+      {% endif %}
+    {% endwith %}
   </ul>
 </header>

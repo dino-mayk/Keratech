@@ -6,14 +6,14 @@
 
 <link href="{% static 'apps/product/detail.css' %}" rel="stylesheet">
 
-<div class="container m-2 mx-auto">
+<div class="container m-5 p-5 mx-auto">
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 d-flex flex-col flex-wrap justify-content-center">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div class="col d-flex flex-col flex-wrap justify-content-center m-3">
+            <div id="carouselIndicators" class="carousel slide" data-bs-ride="true">
                 <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                   {% for product_gallery in product_gallery %}
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter }}" aria-label="Slide {{ forloop.counter }}"></button>
+                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="{{ forloop.counter }}" aria-label="Slide {{ forloop.counter }}"></button>
                   {% endfor %}
                 </div>
                 <div class="carousel-inner">
@@ -26,19 +26,19 @@
                   </div>
                   {% endfor %}
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12" style="text-align:left;">
-            <h2 class="text-center">{{ product.title }}</h2>
-            <p class="text-center">{{ product.description }}</p>
+        <div class="col" style="text-align:left;">
+            <h2>{{ product.title }}</h2>
+            <p>{{ product.description }}</p>
         </div>
     </div>
 </div>
