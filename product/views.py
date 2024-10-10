@@ -39,8 +39,4 @@ def detail(request, pk):
         'product_gallery': product_gallery,
     }
 
-    for img in product_gallery:
-        print(img)
-    print("###########################")
-
     return render(request, template_name, context)

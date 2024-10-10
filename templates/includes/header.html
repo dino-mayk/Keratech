@@ -2,15 +2,15 @@
 
 <link href="{% static 'apps/includes/header.css' %}" rel="stylesheet">
 
-<header class="d-flex flex-wrap justify-content-center">
-  <a href="/" class="d-flex me-md-auto link-body-emphasis text-decoration-none p-2">
-    <img src="{% static 'favicon_package/logo.jpg' %}" width="65px" height="65px">
-  </a>
-  <ul class="nav nav-pills">
+<header class="d-flex justify-content-start py-3 align-items-center">
+  <div class="col-5 logo">
+    <a href="/">
+      <img src="{% static 'favicon_package/logo.jpg' %}" width="100px" height="100px">
+    </a>
+  </div>
+  <ul class="col-5 nav nav-pills">
     <li class="nav-item"><a href="{% url 'homepage:index' %}" class="nav-link active" aria-current="page">Главная</a></li>
     <li class="nav-item"><a href="{% url 'product:list' %}" class="nav-link">Каталог</a></li>
     <li class="nav-item"><a href="{% url 'about:index' %}" class="nav-link">О нас</a></li>
   </ul>
 </header>
-
-<script src="{% static 'apps/includes/header.js' %}"></script>
