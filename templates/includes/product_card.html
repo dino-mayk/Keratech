@@ -6,7 +6,7 @@
     <img src="{{ product.photo.url }}" class="d-block">
     <div class="card-body">
     <h5 class="card-title">{{ product.title }}</h5>
-    <p>{{ product.text | safe |truncatechars_html:50 }}</p>
+    <p>{{ product.text }}</p>
     <p><a class="btn btn-secondary" href="{% url 'product:detail' product.id %}">Подробнее</a></p>
     </div>
 </div>
