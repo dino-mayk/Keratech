@@ -2,7 +2,7 @@
 main {
     background-color: #5cb3e2;
     font-family: 'Bender', Arial, sans-serif;
-    padding-top: 130px;
+    padding-top: 105px;
     ::selection {
         background-color: white;
     }
