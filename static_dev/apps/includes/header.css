@@ -6,3 +6,13 @@ header {
     width: 100%;
     z-index: 100;
 }
+
+.navbar-brand,
+.navbar-nav {
+    margin-left: 50px;
+}
+
+.navbar-toggler {
+    border: 0;
+    margin-right: 20px;
+}
