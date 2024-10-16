@@ -15,13 +15,7 @@
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" href="{% url 'homepage:index' %}">Главная</a>
           <a class="nav-link" href="{% url 'product:list' %}">Каталог</a>
-          {% with request.resolver_match.view_name as view_name %}
-            {% if view_name == 'homepage:index' %}
-              <a class="nav-link" href="#about">О нас</a>
-            {% else %}
-              <a class="nav-link disabled" aria-disabled="true">О нас</a>
-            {% endif %}
-          {% endwith %}
+          <a class="nav-link" href="{% url 'about:index' %}">О нас</a>
         </div>
       </div>
     </div>

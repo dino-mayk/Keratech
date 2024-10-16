@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n static djeymtags %}
+
+{% block content %}
+
+<link href="{% static 'apps/about/index.css' %}" rel="stylesheet">
+
+
+
+<div class="row m-2">
+    <div class="col-12">
+      <div id="djeym-app" class="djeym"></div>
+      <script type="text/javascript" src="{% static "djeym/js/jquery.min.js" %}"></script>
+      <script src="{% static "djeym/js/jquery-regex.min.js" %}"></script>
+      {% djeym_yandex_map slug='karta' lang=request.LANGUAGE_CODE %}
+    </div>
+</div>
+
+{% endblock %}

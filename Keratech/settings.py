@@ -16,8 +16,18 @@ ALLOWED_HOSTS = [
     '*',
 ]
 
-
 INSTALLED_APPS = [
+    'sorl.thumbnail',
+
+    'tinymce',
+    'imagekit',
+    'ckeditor',
+    'ckeditor_uploader',
+    'colorful',
+    'adminsortable',
+    'djeym',
+    'django_cleanup.apps.CleanupConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,8 +37,7 @@ INSTALLED_APPS = [
 
     'homepage',
     'product',
-
-    'sorl.thumbnail',
+    'about',
 ]
 
 MIDDLEWARE = [
@@ -39,6 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django.middleware.locale.LocaleMiddleware',
+    'djeym.middlewares.AjaxMiddleware',
 ]
 
 ROOT_URLCONF = 'Keratech.urls'
@@ -92,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
@@ -113,3 +125,42 @@ MEDIA_URL = '/media/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_FILENAME_GENERATOR = 'djeym.utils.get_filename'
+CKEDITOR_THUMBNAIL_SIZE = (
+    300,
+    300,
+)
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
+CKEDITOR_IMAGE_QUALITY = 40
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 400,
+        'width': '100%',
+    },
+    'djeym': {
+        'toolbar': 'full',
+        'height': 400,
+        'width': 362,
+        'colorButton_colors': 'F44336,C62828,E91E63,AD1457,9C27B0,6A1B9A,'
+                              '673AB7,4527A0,3F51B5,283593,2196F3,1565C0,'
+                              '03A9F4,0277BD,00BCD4,00838F,009688,00695C,'
+                              '4CAF50,2E7D32,8BC34A,558B2F,CDDC39,9E9D24,'
+                              'FFEB3B,F9A825,FFC107,FF8F00,FF9800,EF6C00,'
+                              'FF5722,D84315,795548,4E342E,607D8B,37474F,'
+                              '9E9E9E,424242,000000,FFFFFF',
+        'colorButton_enableAutomatic': False,
+        'colorButton_enableMore': True,
+    }
+}
+
+CSRF_COOKIE_HTTPONLY = False
+
+DJEYM_YMAPS_API_KEY = 'dce4abe7-656d-4250-9aa9-15ea26717341'
+DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
+DJEYM_YMAPS_DOWNLOAD_MODE = 'debug' if DEBUG else 'release'
