@@ -8,9 +8,8 @@ urlpatterns = [
 
     path('', include('homepage.urls'), name='homepage'),
     path('product/', include('product.urls'), name='product'),
-    path('about/', include('about.urls'), name='about'),
+    path('map/', include('map.urls'), name='map'),
 
-    path('grappelli/', include('grappelli.urls'), name='grappelli'),
     path('tinymce/', include('tinymce.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('djeym/', include('djeym.urls', namespace='djeym')),

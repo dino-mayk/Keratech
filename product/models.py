@@ -12,6 +12,16 @@ class Type(models.Model):
         'Тип продукции',
         max_length=150,
     )
+    description = HTMLField(
+        verbose_name='описание',
+        help_text='Введите ваше описание типа продукции',
+    )
+    photo = models.ImageField(
+        upload_to='uploads/preview/%Y/%m',
+        verbose_name='картинка',
+        help_text='Загрузите картинку',
+        null=True,
+    )
 
     def __str__(self):
         return self.title
@@ -100,7 +110,7 @@ class ProductGallery(models.Model):
             )
         return 'нет изображений'
 
-    img_tmb.short_description = 'фотогалерея'
+    img_tmb.short_description = 'галерея'
     img_tmb.allow_tags = True
 
     def sorl_delete(**kwargs):
@@ -113,4 +123,4 @@ class ProductGallery(models.Model):
 
     class Meta:
         verbose_name = "фотографию продукта"
-        verbose_name_plural = "фотогалерея продуктов"
+        verbose_name_plural = "фотографии продуктов"

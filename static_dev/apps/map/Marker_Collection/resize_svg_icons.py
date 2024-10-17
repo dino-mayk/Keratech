@@ -6,11 +6,11 @@ Group redefinition of parameters of width and height for icons of markers and cl
 sudo apt install libxml2-dev libxslt-dev python-dev python3-dev
 sudo pip3 install lxml
 """
-import os
 import math
-from lxml import etree
+import os
 from decimal import Decimal
 
+from lxml import etree
 
 SIZE_HEIGHT_ICONS = 60
 

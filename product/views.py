@@ -32,7 +32,7 @@ def list(request):
 def detail(request, pk):
     template_name = 'product/detail.html'
     product = Product.objects.get(pk=pk)
-    product_gallery = ProductGallery.objects.post_gallery(item_id=pk)
+    product_gallery = ProductGallery.objects.product_gallery(item_id=pk)
 
     context = {
         'product': product,

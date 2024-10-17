@@ -4,6 +4,7 @@
 
 {% block content %}
 
+
 <link href="{% static 'apps/homepage/index.css' %}" rel="stylesheet">
 
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -34,46 +35,32 @@
     </button>
 </div>
 
-<hr class="featurette-divider m-2 p-2"
+<hr class="featurette-divider m-2 p-2">
 
 <div class="container about p-2">
-
-  <div class="row featurette align-items-center">
-    <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">Огнеупоры для разливки стали </h2>
-      <p class="lead">Незаменимы для качественной и эффективной работы металлургического производства. Они защищают от высоких температур, продлевают срок службы оборудования, гарантируют безупречное качество стали.</p>
+  {% for type in types %}
+    <div class="row featurette align-items-center">
+      {% if forloop.counter|divisibleby:2 %}
+        <div class="col-md-7 order-md-2">
+      {% else %}
+        <div class="col-md-7">
+      {% endif %}
+          <h2 class="featurette-heading fw-normal lh-1">{{ type.title }}</h2>
+          <p class="lead">{{ type.description | safe }}</p>
+        </div>
+      
+      {% if forloop.counter|divisibleby:2 %}
+        <div class="col-md-5 order-md-1">
+      {% else %}
+        <div class="col-md-5">
+      {% endif %}
+          <img src="{{ type.photo.url }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фотография">
+        </div>
     </div>
-    <div class="col-md-5">
-      <img src="https://www.film.ru/sites/default/files/filefield_paths/img_0.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фотография">
-    </div>
-  </div>
 
-  <hr class="featurette-divider">
+    <hr class="featurette-divider">
 
-  <div class="row featurette align-items-center">
-    <div class="col-md-7 order-md-2">
-      <h2 class="featurette-heading fw-normal lh-1">Техническая керамика </h2>
-      <p class="lead">Прочные и устойчивые материалы, применяемые в промышленности. Они выдерживают высокие температуры, коррозию и химические воздействия. </p>
-    </div>
-    <div class="col-md-5 order-md-1">
-      <img src="{% static 'apps/homepage/8.jpg' %}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фотография">
-    </div>
-  </div>
-
-  <hr class="featurette-divider">
-
-  <div class="row featurette align-items-center">
-    <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">Керамоволокнистые материалы</h2>
-      <p class="lead">Тонкие волокна из керамики. Они выдерживают очень высокие температуры, хорошо изолируют тепло и не боятся химии. Их используют для изоляции печей, фильтрации воздуха, в композитных материалах.</p>
-    </div>
-    <div class="col-md-5">
-      <img src="{% static 'apps/homepage/9.jpg' %}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фотография">
-    </div>
-  </div>
-
-  <hr class="featurette-divider">
-
+  {% endfor %}
 </div>
 
 

@@ -9,10 +9,18 @@ header {
 
 .navbar-brand,
 .navbar-nav {
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 .navbar-toggler {
     border: 0;
     margin-right: 20px;
+}
+
+@media (max-width: 768px) { 
+    .logo {
+        width: 70px;
+        height: 70px;
+        margin: 10px;
+    }
 }

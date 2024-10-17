@@ -2,10 +2,12 @@
     width: 500px;
     height: auto;
     margin: 25px;
+    text-align: center;
 }
 
 .card img {
     max-width: 450px;
     height: 450px;
-    padding: 20px;
+    margin: auto;
+    padding: 10px;
 }
