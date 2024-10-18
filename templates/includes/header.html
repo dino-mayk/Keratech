@@ -16,11 +16,7 @@
           <a class="nav-link active" aria-current="page" href="{% url 'homepage:index' %}">Главная</a>
           <a class="nav-link" href="{% url 'product:list' %}">Каталог</a>
           <a class="nav-link" href="{% url 'map:index' %}">Мы на картах</a>
-          {% with request.resolver_match.view_name as view_name %}
-            {% if view_name != 'map:index' %}
-              <a class="nav-link" href="#contacts">Контакты</a>
-            {% endif %}
-          {% endwith %}
+          <a class="nav-link" href="#contacts">Контакты</a>
         </div>
       </div>
     </div>

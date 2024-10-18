@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/static_dev/favicon_package/logo.jpg">
+  <img src="/static_dev/favicon/logo_no_text.svg">
 </p>
 
 <h3 align="center">KeraTech</h3>
