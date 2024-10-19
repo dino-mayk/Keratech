@@ -1,6 +1,7 @@
 import os
 from os.path import dirname, join
 from pathlib import Path
+from sys import argv
 
 from dotenv import load_dotenv
 
@@ -9,9 +10,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_path = join(dirname(__file__), '../dev.env')
 load_dotenv(dotenv_path)
 
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', default='True') == 'True'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+ENGINE = os.environ.get('ENGINE')
+NAME = os.environ.get('NAME')
+USER = os.environ.get('USER')
+PASSWORD = os.environ.get('PASSWORD')
+HOST = os.environ.get('HOST')
+PORT = os.environ.get('PORT')
+DJEYM_YMAPS_API_KEY = os.environ.get('DJEYM_YMAPS_API_KEY')
+
 ALLOWED_HOSTS = [
     '*',
 ]
@@ -78,10 +86,20 @@ WSGI_APPLICATION = 'Keratech.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': ENGINE,
+       'NAME': NAME,
+       'USER': USER,
+       'PASSWORD': PASSWORD,
+       'HOST': HOST,
+       'PORT': PORT,
     }
 }
+
+if 'test' in argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase'
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -161,6 +179,5 @@ CKEDITOR_CONFIGS = {
 
 CSRF_COOKIE_HTTPONLY = False
 
-DJEYM_YMAPS_API_KEY = 'dce4abe7-656d-4250-9aa9-15ea26717341'
 DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
 DJEYM_YMAPS_DOWNLOAD_MODE = 'debug' if DEBUG else 'release'
