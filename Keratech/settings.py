@@ -86,10 +86,20 @@ WSGI_APPLICATION = 'Keratech.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': ENGINE,
+       'NAME': NAME,
+       'USER': USER,
+       'PASSWORD': PASSWORD,
+       'HOST': HOST,
+       'PORT': PORT,
     }
 }
+
+if 'test' in argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase'
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
