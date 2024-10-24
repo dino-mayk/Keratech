@@ -3,17 +3,19 @@
 <link href="{% static 'apps/includes/header.css' %}" rel="stylesheet">
 
 <header class="position-fixed">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      
+      <a class="navbar-brand mobile m-1" href="{% url 'homepage:index' %}">
+        <img class="logo" src="{% static 'favicon/logo_text.svg' %}" width="70px" height="70px">
+      </a>
+      <button class="navbar-toggler mr-2 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse justify-content-center me-5" id="navbarNavAltMarkup">
-        <a class="navbar-brand" href="{% url 'homepage:index' %}">
-          <img class="logo" src="{% static 'favicon/logo_text.svg' %}" width="80px" height="80px">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-nav text-center">
+        <div class="navbar-nav text-center align-items-center">
+          <a class="navbar-brand" href="{% url 'homepage:index' %}">
+            <img class="logo" src="{% static 'favicon/logo_text.svg' %}" width="80px" height="80px">
+          </a>
           <a class="nav-link active" aria-current="page" href="{% url 'homepage:index' %}">Главная</a>
           <a class="nav-link" href="{% url 'product:list' %}">Каталог</a>
           <a class="nav-link" href="{% url 'map:index' %}">Мы на картах</a>

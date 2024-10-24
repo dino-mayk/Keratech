@@ -23,6 +23,7 @@ def list(request):
     grouped_products = group_products_by_types(all_products)
 
     context = {
+        'title': 'Каталог',
         'grouped_products': grouped_products,
     }
 
@@ -35,6 +36,7 @@ def detail(request, pk):
     product_gallery = ProductGallery.objects.product_gallery(item_id=pk)
 
     context = {
+        'title': product.title,
         'product': product,
         'product_gallery': product_gallery,
     }

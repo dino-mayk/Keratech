@@ -2,4 +2,10 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'map/index.html')
+    template_name = 'map/index.html'
+
+    context = {
+        'title': 'Мы на картах',
+    }
+
+    return render(request, template_name, context)

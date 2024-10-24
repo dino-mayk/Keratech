@@ -1,31 +1,21 @@
 @import "https://fonts.fontstorage.com/import/bender.css";
 header {
     font-family: 'Bender', Arial, sans-serif;
-    font-weight: 700;
     background-color: white;
     color: black;
     width: 100%;
     z-index: 100;
 }
 
-.logo{
-    display: inline-block;
-	text-align: center;
-}
-.navbar-brand,
-.navbar-nav {
-    margin-left: 20px;
+.navbar-brand.mobile {
+    display: none;
 }
 
-.navbar-toggler {
-    border: 0;
-    margin-right: 20px;
-}
-
-@media (max-width: 768px) { 
-    .logo {
-        width: 70px;
-        height: 70px;
-        margin: 10px;
+@media (max-width: 991px) { 
+    .navbar-brand.mobile {
+        display: block;
+    }
+    .navbar-brand {
+        display: none;
     }
 }

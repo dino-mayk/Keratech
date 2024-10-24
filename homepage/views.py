@@ -7,6 +7,9 @@ def index(request):
     template_name = 'homepage/index.html'
     types = Type.objects.all()
 
-    context = {'types': types}
+    context = {
+        'title': 'Главная',
+        'types': types,
+    }
 
     return render(request, template_name, context)
