@@ -1,12 +1,62 @@
 @import "https://fonts.fontstorage.com/import/bender.css";
 header {
     font-family: 'Bender', Arial, sans-serif;
+    font-weight: 600;
     background-color: white;
     color: black;
     width: 100%;
     z-index: 100;
 }
+.navbar-toggler-icon {
+    background-image: none!important;
+    background-color: var(--bs-gray-800);
+    height: 3px;
+    width: 25px;
+    margin: 10px 0;
+    position: relative;
+    transition: all 0.35s ease-out;
+    transform-origin: center;
+  }
 
+.navbar-toggler-icon::before {
+    display: block;
+    background-color: var(--bs-gray-800);
+    height: 3px;
+    content: "";
+    position: relative;
+    top: -7px;
+    transition: all 0.15s ease-out;/*taken down to hide quicker*/
+    transform-origin: center;
+  }
+  
+.navbar-toggler-icon::after {
+    display: block;
+    background-color: var(--bs-gray-800);
+    height: 3px;
+    content: "";
+    position: relative;
+    top: 4px;
+    transition: all 0.35s ease-out;
+    transform-origin: center;
+  }
+  
+  .navbar-dark .navbar-toggler-icon,
+  .navbar-dark .navbar-toggler-icon::before,
+  .navbar-dark .navbar-toggler-icon::after {
+    background-color: var(--bs-gray-100);
+  }
+  
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+    transform: rotate(45deg);
+  }
+  
+  .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+    opacity: 0;
+  }
+  
+  .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+    transform: rotate(-90deg) translateX(7px);
+  }
 .navbar-brand.mobile {
     display: none;
 }
@@ -18,4 +68,8 @@ header {
     .navbar-brand {
         display: none;
     }
+}
+
+.nav-link{
+    
 }
