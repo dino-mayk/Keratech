@@ -4,22 +4,22 @@
 
 <header class="position-fixed">
   <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+    <div class="container-fluid ms-4">
       <a class="navbar-brand mobile m-1" href="{% url 'homepage:index' %}">
         <img class="logo" src="{% static 'favicon/logo_text.svg' %}" width="70px" height="70px">
       </a>
       <button class="navbar-toggler mr-2 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
+      </button> 
+      <a class="navbar-brand" href="{% url 'homepage:index' %}">
+        <img class="logo" src="{% static 'favicon/logo_text.svg' %}" width="80px" height="80px">
+      </a>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
         <div class="navbar-nav text-center align-items-center">
-          <a class="navbar-brand" href="{% url 'homepage:index' %}">
-            <img class="logo" src="{% static 'favicon/logo_text.svg' %}" width="80px" height="80px">
-          </a>
           <a class="nav-link active" aria-current="page" href="{% url 'homepage:index' %}">Главная</a>
-          <a class="nav-link" href="{% url 'product:list' %}">Каталог</a>
-          <a class="nav-link" href="{% url 'map:index' %}">Мы на картах</a>
-          <a class="nav-link" href="#contacts">Контакты</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'product:list' %}">Каталог</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'map:index' %}">Философия</a>
+          <a class="nav-link active" aria-current="page" href="#contacts">Контакты</a>
         </div>
       </div>
     </div>
