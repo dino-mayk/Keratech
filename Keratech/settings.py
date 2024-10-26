@@ -101,6 +101,12 @@ if 'test' in argv:
         'NAME': 'mydatabase'
     }
 
+if 'test' in argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase'
+    }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
