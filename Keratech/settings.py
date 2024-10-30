@@ -26,8 +26,6 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'sorl.thumbnail',
-
-    'tinymce',
     'imagekit',
     'ckeditor',
     'ckeditor_uploader',
@@ -45,7 +43,8 @@ INSTALLED_APPS = [
 
     'homepage',
     'product',
-    'map',
+    'philosophy',
+    # 'map',
 ]
 
 MIDDLEWARE = [

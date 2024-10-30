@@ -9,30 +9,37 @@
 
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+      {% if carousel_imgs|length > 0 %}
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+        {% for carousel_img in carousel_imgs  %}
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ forloop.counter }}" aria-label="Slide {{ forloop.counter }}"></button>
+        {% endfor %}
+      {% endif %}
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img width="100%" height="100%" src="{% static 'apps/homepage/2_blue.jpg' %}">
-      </div>
-      <div class="carousel-item">
-        <img width="100%" height="100%" src="{% static 'apps/homepage/3_blue.jpg' %}">
-      </div>
-      <div class="carousel-item">
-        <img width="100%" height="100%" src="{% static 'apps/homepage/4_blue.jpg' %}">
-      </div>
-      
+      {% if carousel_img_active != None %}
+        <div class="carousel-item active">
+          <img width="100%" height="100%" src="{{ carousel_img_active }}">
+        </div>
+      {% else %}
+        <img width="100%" height="100%" src="{% static 'apps/homepage/404.jpg' %}">
+      {% endif %}
+      {% for carousel_img in carousel_imgs %}
+        <div class="carousel-item">
+          <img width="100%" height="100%" src="{{ carousel_img }}">
+        </div>
+      {% endfor %}
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    {% if carousel_imgs|length > 0 %}
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    {% endif %}
 </div>
 
 <hr class="featurette-divider m-2 p-2">
@@ -46,7 +53,7 @@
         <div class="col-md-7">
       {% endif %}
           <h2 class="featurette-heading fw-normal lh-1">{{ type.title }}</h2>
-          <p class="lead">{{ type.description | safe }}</p>
+          <p class="lead">{{ type.description }}</p>
         </div>
       
       {% if forloop.counter|divisibleby:2 %}

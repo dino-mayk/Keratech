@@ -1,5 +1,5 @@
 .card {
-    width: 500px;
+    max-width: 500px;
     height: auto;
     margin: 25px;
     text-align: center;
@@ -7,7 +7,7 @@
 
 .card img {
     max-width: 450px;
-    height: 450px;
+    max-height: 450px;
     margin: auto;
     padding: 10px;
 }

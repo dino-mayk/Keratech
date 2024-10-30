@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container marketing mt-2 mb-2 pt-2 pb-2">
+    {% for thought in thoughts %}
+        <div class="shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">{{ thought.title }}</h2>
+                    <p class="lead">{{ thought.description }}</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ thought.photo.url }}" height="500" width="500" class="d-block mx-lg-auto img-fluid" alt="img" loading="lazy">
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

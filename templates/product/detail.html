@@ -6,15 +6,17 @@
 
 <link href="{% static 'apps/product/detail.css' %}" rel="stylesheet">
 
-<div class="container m-5 p-5 mx-auto">
+<div class="container mt-3 pt-3 mb-3 pb-3 mx-auto">
     <div class="row">
-        <div class="col d-flex flex-col flex-wrap justify-content-center m-3">
+        <div class="col-lg-6 d-flex flex-col flex-wrap justify-content-center">
             <div id="carouselIndicators" class="carousel slide" data-bs-ride="true">
                 <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  {% for product_gallery in product_gallery %}
-                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="{{ forloop.counter }}" aria-label="Slide {{ forloop.counter }}"></button>
-                  {% endfor %}
+                  {% if product_gallery|length > 0 %}
+                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    {% for product_gallery in product_gallery %}
+                      <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="{{ forloop.counter }}" aria-label="Slide {{ forloop.counter }}"></button>
+                    {% endfor %}
+                  {% endif %}
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
@@ -26,19 +28,21 @@
                   </div>
                   {% endfor %}
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+                {% if product_gallery|length > 0 %}
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                {% endif %}
             </div>
         </div>
-        <div class="col" style="text-align:left;">
+        <div class="col-lg-6 text-center">
             <h2>{{ product.title }}</h2>
-            <p>{{ product.description | safe }}</p>
+            <p>{{ product.description }}</p>
         </div>
     </div>
 </div>

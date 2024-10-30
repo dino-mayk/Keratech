@@ -2,12 +2,13 @@
 
 <link href="{% static 'apps/includes/product_card.css' %}" rel="stylesheet">
 
-<div class="col-4 card text-center ">
-    <a class="text-decoration-none text-reset" href="{% url 'product:detail' product.id %}">
-    <img src="{{ product.photo.url }}" class="d-block">
+<div class="card">
+    <img src="{{ product.photo.url }}" class="card-img-top">
     <div class="card-body">
-    <h5 class="card-title">{{ product.title }}</h5>
-    <p>{{ product.text }}</p>
-    </a>
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text">{{ product.text }}</p>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-primary" href="{% url 'product:detail' product.id %}" role="button">Подробнее</a>
     </div>
 </div>

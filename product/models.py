@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
-from tinymce.models import HTMLField
 
 from product.managers import ProductGalleryManager
 
@@ -12,14 +11,14 @@ class Type(models.Model):
         'Тип продукции',
         max_length=150,
     )
-    description = HTMLField(
+    description = models.TextField(
         verbose_name='описание',
         help_text='Введите ваше описание типа продукции',
     )
     photo = models.ImageField(
-        upload_to='uploads/preview/%Y/%m',
-        verbose_name='картинка',
-        help_text='Загрузите картинку',
+        upload_to='uploads/img/type/%Y/%m',
+        verbose_name='изображение',
+        help_text='Загрузите изображение',
         null=True,
     )
 
@@ -36,14 +35,14 @@ class Product(models.Model):
         'Название продукта',
         max_length=150,
     )
-    description = HTMLField(
+    description = models.TextField(
         verbose_name='описание',
         help_text='Введите ваше описание продукта',
     )
     photo = models.ImageField(
-        upload_to='uploads/preview/%Y/%m',
-        verbose_name='картинка',
-        help_text='Загрузите картинку',
+        upload_to='uploads/img/product/preview/%Y/%m',
+        verbose_name='изображение',
+        help_text='Загрузите изображение',
         null=True,
     )
     type = models.ForeignKey(
@@ -69,7 +68,7 @@ class Product(models.Model):
             )
         return 'нет изображений'
 
-    img_tmb.short_description = 'Превьюшка'
+    img_tmb.short_description = 'Изображение'
     img_tmb.allow_tags = True
 
     def sorl_delete(**kwargs):
@@ -87,9 +86,9 @@ class Product(models.Model):
 
 class ProductGallery(models.Model):
     upload = models.ImageField(
-        upload_to='uploads/gallery/%Y/%m',
-        verbose_name="картинка",
-        help_text='загрузите картинку'
+        upload_to='uploads/img/product/gallery/%Y/%m',
+        verbose_name="изображение",
+        help_text='загрузите изображение'
     )
     item = models.ForeignKey(
         Product,
@@ -110,7 +109,7 @@ class ProductGallery(models.Model):
             )
         return 'нет изображений'
 
-    img_tmb.short_description = 'галерея'
+    img_tmb.short_description = 'изображения'
     img_tmb.allow_tags = True
 
     def sorl_delete(**kwargs):
@@ -122,5 +121,5 @@ class ProductGallery(models.Model):
         return self.upload.url
 
     class Meta:
-        verbose_name = "фотографию продукта"
-        verbose_name_plural = "фотографии продуктов"
+        verbose_name = "изображение продукта"
+        verbose_name_plural = "изображения продуктов"
