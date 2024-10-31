@@ -25,13 +25,14 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = [
-    'sorl.thumbnail',
-    'imagekit',
+    # 'imagekit',
     # 'ckeditor',
     # 'ckeditor_uploader',
-    'colorful',
-    'adminsortable',
+    # 'colorful',
+    # 'adminsortable',
     # 'djeym',
+    'sorl.thumbnail',
+
     'django_cleanup.apps.CleanupConfig',
 
     'django.contrib.admin',
