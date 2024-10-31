@@ -11,8 +11,8 @@ urlpatterns = [
     path('philosophy/', include('philosophy.urls'), name='philosophy'),
     # path('map/', include('map.urls'), name='map'),
 
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('djeym/', include('djeym.urls', namespace='djeym')),
+    # path('ckeditor/', include('ckeditor_uploader.urls')),
+    # path('djeym/', include('djeym.urls', namespace='djeym')),
 ]
 
 if settings.DEBUG:
