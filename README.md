@@ -48,6 +48,12 @@ Mac, Linux:
 pip3 install -r requirements.txt
 ```
 
+### Run postgres container:
+
+```bash
+docker run -d -p 5432:5432 --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres postgres:latest
+```
+
 #### Django server:
 
 Windows:
