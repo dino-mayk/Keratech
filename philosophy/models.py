@@ -7,12 +7,12 @@ class Thought(models.Model):
         max_length=150,
     )
     description = models.TextField(
-        verbose_name='описание',
+        verbose_name='Описание',
         help_text='Введите текст',
     )
     photo = models.ImageField(
         upload_to='uploads/img/thought/%Y/%m',
-        verbose_name='изображение',
+        verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
     )

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
@@ -12,12 +13,12 @@ class Type(models.Model):
         max_length=150,
     )
     description = models.TextField(
-        verbose_name='описание',
+        verbose_name='Описание',
         help_text='Введите ваше описание типа продукции',
     )
     photo = models.ImageField(
         upload_to='uploads/img/type/%Y/%m',
-        verbose_name='изображение',
+        verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
     )
@@ -36,12 +37,12 @@ class Product(models.Model):
         max_length=150,
     )
     description = models.TextField(
-        verbose_name='описание',
+        verbose_name='Описание',
         help_text='Введите ваше описание продукта',
     )
     photo = models.ImageField(
         upload_to='uploads/img/product/preview/%Y/%m',
-        verbose_name='изображение',
+        verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
     )
@@ -49,8 +50,9 @@ class Product(models.Model):
         Type,
         on_delete=models.CASCADE,
         verbose_name="Тип продукции",
-        help_text='выберете тип продукции'
+        help_text='Выберете тип продукции'
     )
+    pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
 
     @property
     def get_img(self):
@@ -66,7 +68,7 @@ class Product(models.Model):
             return mark_safe(
                 f'<img src="{self.get_img.url}">'
             )
-        return 'нет изображений'
+        return 'Нет изображений'
 
     img_tmb.short_description = 'Изображение'
     img_tmb.allow_tags = True
@@ -79,6 +81,9 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('product:detail', args=[str(self.id)])
+
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
@@ -87,14 +92,14 @@ class Product(models.Model):
 class ProductGallery(models.Model):
     upload = models.ImageField(
         upload_to='uploads/img/product/gallery/%Y/%m',
-        verbose_name="изображение",
+        verbose_name="Изображение",
         help_text='загрузите изображение'
     )
     item = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
-        verbose_name="продукт",
-        help_text='выберете продукт'
+        verbose_name="Продукт",
+        help_text='Выберете продукт'
     )
     objects = ProductGalleryManager()
 
@@ -107,9 +112,9 @@ class ProductGallery(models.Model):
             return mark_safe(
                 f'<img src="{self.get_img.url}">'
             )
-        return 'нет изображений'
+        return 'Нет изображений'
 
-    img_tmb.short_description = 'изображения'
+    img_tmb.short_description = 'Изображения'
     img_tmb.allow_tags = True
 
     def sorl_delete(**kwargs):
@@ -121,5 +126,5 @@ class ProductGallery(models.Model):
         return self.upload.url
 
     class Meta:
-        verbose_name = "изображение продукта"
-        verbose_name_plural = "изображения продуктов"
+        verbose_name = "Изображение продукта"
+        verbose_name_plural = "Изображения продуктов"

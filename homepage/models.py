@@ -9,7 +9,7 @@ from homepage.managers import CarouselImgManager
 class CarouselImg(models.Model):
     photo = models.ImageField(
         upload_to='uploads/img/carousel/%Y/%m',
-        verbose_name='изображение',
+        verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
     )
@@ -29,7 +29,7 @@ class CarouselImg(models.Model):
             return mark_safe(
                 f'<img src="{self.get_img.url}">'
             )
-        return 'нет изображений'
+        return 'Нет изображений'
 
     img_tmb.short_description = 'Изображения карусели'
     img_tmb.allow_tags = True
