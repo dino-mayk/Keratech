@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     '*',
     # IP,
     # DOMEN,
-    # 'www.' + domen,
+    # 'www.' + DOMEN,
 ]
 
 INSTALLED_APPS = [
@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'product',
     'philosophy',
     # 'map',
+
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'core.middleware.RedirectMiddleware',
 
     # 'django.middleware.locale.LocaleMiddleware',
     # 'djeym.middlewares.AjaxMiddleware',

@@ -4,8 +4,7 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views.generic.base import TemplateView
-from django.shortcuts import redirect
-from .settings import DOMEN
+
 from .sitemaps import ProductSitemap, StaticViewSitemap
 
 sitemaps = {
@@ -46,23 +45,6 @@ urlpatterns = [
     #     'djeym/',
     #     include('djeym.urls', namespace='djeym'),
     # ),
-
-    path(
-        '',
-        lambda request: redirect(f'https://{DOMEN}/', permanent=True),
-    ),
-    path(
-        '//',
-        lambda request: redirect(f'https://{DOMEN}/', permanent=True),
-    ),
-    path(
-        f'www.{DOMEN}',
-        lambda request: redirect(f'https://{DOMEN}/', permanent=True),
-    ),
-    path(
-        f'https://www.{DOMEN}',
-        lambda request: redirect(f'https://{DOMEN}/', permanent=True),
-    ),
 
     path(
         "robots.txt",
