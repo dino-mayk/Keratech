@@ -4,7 +4,8 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views.generic.base import TemplateView
-
+from django.shortcuts import redirect
+from .settings import DOMEN
 from .sitemaps import ProductSitemap, StaticViewSitemap
 
 sitemaps = {
@@ -13,11 +14,56 @@ sitemaps = {
 }
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(
+        'admin/',
+        admin.site.urls,
+    ),
 
-    path('', include('homepage.urls'), name='homepage'),
-    path('product/', include('product.urls'), name='product'),
-    path('philosophy/', include('philosophy.urls'), name='philosophy'),
+    path(
+        '',
+        include('homepage.urls'), name='homepage',
+    ),
+    path(
+        'product/',
+        include('product.urls'), name='product',
+    ),
+    path(
+        'philosophy/',
+        include('philosophy.urls'),
+        name='philosophy',
+    ),
+    # path(
+    #     'map/',
+    #     include('map.urls'),
+    #     name='map',
+    # ),
+
+    # path(
+    #     'ckeditor/',
+    #     include('ckeditor_uploader.urls'),
+    # ),
+    # path(
+    #     'djeym/',
+    #     include('djeym.urls', namespace='djeym'),
+    # ),
+
+    path(
+        '',
+        lambda request: redirect(f'https://{DOMEN}/', permanent=True),
+    ),
+    path(
+        '//',
+        lambda request: redirect(f'https://{DOMEN}/', permanent=True),
+    ),
+    path(
+        f'www.{DOMEN}',
+        lambda request: redirect(f'https://{DOMEN}/', permanent=True),
+    ),
+    path(
+        f'https://www.{DOMEN}',
+        lambda request: redirect(f'https://{DOMEN}/', permanent=True),
+    ),
+
     path(
         "robots.txt",
         TemplateView.as_view(
@@ -25,12 +71,10 @@ urlpatterns = [
             content_type="text/plain",
         )
     ),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps})
-
-    # path('map/', include('map.urls'), name='map'),
-
-    # path('ckeditor/', include('ckeditor_uploader.urls')),
-    # path('djeym/', include('djeym.urls', namespace='djeym')),
+    path(
+        'sitemap.xml',
+        sitemap, {'sitemaps': sitemaps},
+    )
 ]
 
 if settings.DEBUG:

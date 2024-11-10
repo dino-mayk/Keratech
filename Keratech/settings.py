@@ -10,18 +10,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 dotenv_path = join(dirname(__file__), '../dev.env')
 load_dotenv(dotenv_path)
 
+
 DEBUG = os.environ.get('DEBUG', default='True') == 'True'
 SECRET_KEY = os.environ.get('SECRET_KEY')
+
 ENGINE = os.environ.get('ENGINE')
 NAME = os.environ.get('NAME')
 USER = os.environ.get('USER')
 PASSWORD = os.environ.get('PASSWORD')
 HOST = os.environ.get('HOST')
 PORT = os.environ.get('PORT')
+
+IP = os.environ.get('IP')
+DOMEN = os.environ.get('DOMEN')
+
 # DJEYM_YMAPS_API_KEY = os.environ.get('DJEYM_YMAPS_API_KEY')
+
 
 ALLOWED_HOSTS = [
     '*',
+    # IP,
+    # DOMEN,
+    # 'www.' + domen,
 ]
 
 INSTALLED_APPS = [
