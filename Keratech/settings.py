@@ -57,8 +57,6 @@ INSTALLED_APPS = [
     'product',
     'philosophy',
     # 'map',
-
-    'core'
 ]
 
 MIDDLEWARE = [
@@ -69,8 +67,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'core.middleware.RedirectMiddleware',
 
     # 'django.middleware.locale.LocaleMiddleware',
     # 'djeym.middlewares.AjaxMiddleware',
