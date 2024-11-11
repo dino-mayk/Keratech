@@ -68,6 +68,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'homepage.middleware.RedirectToHomeMiddleware',
+
     # 'django.middleware.locale.LocaleMiddleware',
     # 'djeym.middlewares.AjaxMiddleware',
 ]
