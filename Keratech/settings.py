@@ -21,17 +21,11 @@ PASSWORD = os.environ.get('PASSWORD')
 HOST = os.environ.get('HOST')
 PORT = os.environ.get('PORT')
 
-IP = os.environ.get('IP')
-DOMEN = os.environ.get('DOMEN')
-
 # DJEYM_YMAPS_API_KEY = os.environ.get('DJEYM_YMAPS_API_KEY')
 
 
 ALLOWED_HOSTS = [
     '*',
-    # IP,
-    # DOMEN,
-    # 'www.' + DOMEN,
 ]
 
 INSTALLED_APPS = [
@@ -55,7 +49,6 @@ INSTALLED_APPS = [
 
     'homepage',
     'product',
-    'philosophy',
     # 'map',
 ]
 
@@ -194,3 +187,24 @@ CSRF_COOKIE_HTTPONLY = False
 
 # DJEYM_YMAPS_API_KEY_FOR_ENTERPRISE = False
 # DJEYM_YMAPS_DOWNLOAD_MODE = 'debug' if DEBUG else 'release'
+
+if DEBUG:
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+    INSTALLED_APPS += [
+        'debug_toolbar',
+    ]
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
+
+    import mimetypes
+    mimetypes.add_type(
+        'application/javascript',
+        '.js',
+    )
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False,
+    }

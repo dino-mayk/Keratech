@@ -26,11 +26,7 @@ urlpatterns = [
         'product/',
         include('product.urls'), name='product',
     ),
-    path(
-        'philosophy/',
-        include('philosophy.urls'),
-        name='philosophy',
-    ),
+
     # path(
     #     'map/',
     #     include('map.urls'),
@@ -60,6 +56,15 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        path(
+            '__debug__/',
+            include(
+                debug_toolbar.urls,
+            ),
+        ),
+    ]
     urlpatterns += static(
         settings.MEDIA_URL,
         document_root=settings.MEDIA_ROOT,

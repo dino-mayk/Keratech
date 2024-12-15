@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<section class="container text-center">
+  <div class="row py-lg-5">
+    <h1 class="fw-light">{{ type.title }}</h1>
+    <img src="{{ type.photo.url }}" class="d-block">
+    <p class="lead text-body-secondary">{{ type.description }}</p>
+  </div>
+</section>
+
+<h2 class="text-center">Подходящая продукция:</h2>
+
+<div class="row justify-content-center m-2">
+  {% for product in products_for_type %}
+    {% include 'includes/product_card.html' with product=product %}
+  {% endfor %}
+</div>
+
+
+{% endblock %}

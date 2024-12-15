@@ -62,6 +62,7 @@
         <div class="col-md-5">
       {% endif %}
           <img src="{{ type.photo.url }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фотография">
+          <a class="btn btn-light m-2" href="{% url 'product:type_detail' type.id %}" role="button">Подробнее</a>
         </div>
     </div>
 
