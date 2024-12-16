@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
+from transliterate import slugify
 
 from product.managers import ProductGalleryManager
 
@@ -11,6 +12,11 @@ class Type(models.Model):
     title = models.CharField(
         'Тип продукции',
         max_length=150,
+    )
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+        blank=True,
     )
     description = models.TextField(
         verbose_name='Описание',
@@ -22,9 +28,24 @@ class Type(models.Model):
         help_text='Загрузите изображение',
         null=True,
     )
+    pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        slug_candidate = slugify(self.title)
+        counter = 1
+
+        while Type.objects.filter(slug=slug_candidate).exists():
+            slug_candidate = slugify(self.title) + f"-{counter}"
+            counter += 1
+
+        self.slug = slug_candidate
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('product:type_detail', args=[self.slug])
 
     class Meta:
         verbose_name = 'Тип продукции'
@@ -35,6 +56,11 @@ class Product(models.Model):
     title = models.CharField(
         'Название продукта',
         max_length=150,
+    )
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+        blank=True,
     )
     description = models.TextField(
         verbose_name='Описание',
@@ -78,11 +104,22 @@ class Product(models.Model):
 
     cleanup_pre_delete.connect(sorl_delete)
 
+    def save(self, *args, **kwargs):
+        slug_candidate = slugify(self.title)
+        counter = 1
+
+        while Product.objects.filter(slug=slug_candidate).exists():
+            slug_candidate = slugify(self.title) + f"-{counter}"
+            counter += 1
+
+        self.slug = slug_candidate
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('product:detail', args=[str(self.id)])
+        return reverse('product:product_detail', args=[self.slug])
 
     class Meta:
         verbose_name = 'Продукт'
@@ -95,7 +132,7 @@ class ProductGallery(models.Model):
         verbose_name="Изображение",
         help_text='загрузите изображение'
     )
-    item = models.ForeignKey(
+    product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
         verbose_name="Продукт",

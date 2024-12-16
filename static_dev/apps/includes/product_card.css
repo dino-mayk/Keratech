@@ -1,13 +1,15 @@
 .card {
     max-width: 500px;
-    height: auto;
+    height: 500px;
     margin: 25px;
     text-align: center;
 }
 
 .card img {
-    max-width: 450px;
-    max-height: 450px;
-    margin: auto;
-    padding: 10px;
+    height: 350px;
+    width: 100%;
+}
+  
+.carousel-inner {
+    height: 350px;
 }

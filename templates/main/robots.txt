@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Sitemap: https://keratech-vrn.ru/sitemap.xml
+Sitemap: https://keratekh.ru/sitemap.xml

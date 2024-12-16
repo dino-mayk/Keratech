@@ -21,7 +21,7 @@ class AdminProduct(admin.ModelAdmin):
 @admin.register(ProductGallery)
 class AdminProductGallery(admin.ModelAdmin):
     list_display = [
-        'item',
+        'product',
         'img_tmb',
     ]
 
