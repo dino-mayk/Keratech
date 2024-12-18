@@ -5,21 +5,21 @@ from product.models import Product, ProductGallery, Type
 
 
 @admin.register(Type)
-class AdminType(admin.ModelAdmin):
+class TypeAdmin(admin.ModelAdmin):
     list_display = [
         'title',
     ]
 
 
 @admin.register(Product)
-class AdminProduct(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     list_display = [
         'title',
     ]
 
 
 @admin.register(ProductGallery)
-class AdminProductGallery(admin.ModelAdmin):
+class ProductGalleryAdmin(admin.ModelAdmin):
     list_display = [
         'product',
         'img_tmb',

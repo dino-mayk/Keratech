@@ -17,6 +17,8 @@ class Type(models.Model):
         max_length=255,
         unique=True,
         blank=True,
+        help_text="""Это поле опционально, вы можете его не заполнять,
+                 алгоритм сгенерирует slug за вас.""",
     )
     description = models.TextField(
         verbose_name='Описание',
@@ -28,17 +30,25 @@ class Type(models.Model):
         help_text='Загрузите изображение',
         null=True,
     )
-    pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
+    pub_date = models.DateTimeField(
+        'Дата публикации',
+        auto_now_add=True,
+    )
 
     def save(self, *args, **kwargs):
         slug_candidate = slugify(self.title)
-        counter = 1
 
-        while Type.objects.filter(slug=slug_candidate).exists():
-            slug_candidate = slugify(self.title) + f"-{counter}"
+        if slug_candidate is None:
+            slug_candidate = 'obj'
+
+        counter = 1
+        slug = slug_candidate
+
+        while Type.objects.filter(slug=slug).exists():
+            slug = slug_candidate + f"-{counter}"
             counter += 1
 
-        self.slug = slug_candidate
+        self.slug = slug
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -61,6 +71,8 @@ class Product(models.Model):
         max_length=255,
         unique=True,
         blank=True,
+        help_text="""Это поле опционально, вы можете его не заполнять,
+                 алгоритм сгенерирует slug за вас.""",
     )
     description = models.TextField(
         verbose_name='Описание',
@@ -78,7 +90,10 @@ class Product(models.Model):
         verbose_name="Тип продукции",
         help_text='Выберете тип продукции'
     )
-    pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
+    pub_date = models.DateTimeField(
+        'Дата публикации',
+        auto_now_add=True,
+    )
 
     @property
     def get_img(self):
@@ -106,13 +121,18 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         slug_candidate = slugify(self.title)
-        counter = 1
 
-        while Product.objects.filter(slug=slug_candidate).exists():
-            slug_candidate = slugify(self.title) + f"-{counter}"
+        if slug_candidate is None:
+            slug_candidate = 'obj'
+
+        counter = 1
+        slug = slug_candidate
+
+        while Product.objects.filter(slug=slug).exists():
+            slug = slug_candidate + f"-{counter}"
             counter += 1
 
-        self.slug = slug_candidate
+        self.slug = slug
         super().save(*args, **kwargs)
 
     def __str__(self):
