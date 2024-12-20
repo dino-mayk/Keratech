@@ -6,13 +6,17 @@ from sorl.thumbnail import delete, get_thumbnail
 from core.validators import validate_image_aspect_ratio
 
 
+def validate_image_aspect_ratio_func(image):
+    validate_image_aspect_ratio(image, (16, 9))
+
+
 class CarouselImg(models.Model):
     photo = models.ImageField(
         upload_to='uploads/img/carousel/%Y/%m',
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
-        validators=[lambda image: validate_image_aspect_ratio(image, (16, 9))],
+        validators=[validate_image_aspect_ratio_func],
     )
 
     @property

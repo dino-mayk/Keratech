@@ -9,6 +9,10 @@ from transliterate import slugify
 from core.validators import validate_image_aspect_ratio
 
 
+def validate_image_aspect_ratio_func(image):
+    validate_image_aspect_ratio(image, (4, 3))
+
+
 class Type(models.Model):
     title = models.CharField(
         'Тип продукции',
@@ -30,7 +34,7 @@ class Type(models.Model):
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
-        validators=[lambda image: validate_image_aspect_ratio(image, (4, 3))],
+        validators=[validate_image_aspect_ratio_func],
     )
     pub_date = models.DateTimeField(
         'Дата публикации',
@@ -109,7 +113,7 @@ class Product(models.Model):
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
-        validators=[lambda image: validate_image_aspect_ratio(image, (4, 3))],
+        validators=[validate_image_aspect_ratio_func],
     )
     type = models.ForeignKey(
         Type,
@@ -178,7 +182,7 @@ class ProductGallery(models.Model):
         upload_to='uploads/img/product/gallery/%Y/%m',
         verbose_name="Изображение",
         help_text='загрузите изображение',
-        validators=[lambda image: validate_image_aspect_ratio(image, (4, 3))],
+        validators=[validate_image_aspect_ratio_func],
     )
     product = models.ForeignKey(
         Product,
