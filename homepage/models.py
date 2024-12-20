@@ -3,6 +3,7 @@ from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
 
+from core.validators import validate_image_aspect_ratio
 from homepage.managers import CarouselImgManager
 
 
@@ -12,6 +13,7 @@ class CarouselImg(models.Model):
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
+        validators=[lambda image: validate_image_aspect_ratio(image, (16, 9))],
     )
     objects = CarouselImgManager()
 
@@ -19,7 +21,7 @@ class CarouselImg(models.Model):
     def get_img(self):
         return get_thumbnail(
             self.photo,
-            '300x300',
+            '320x240',
             crop='center',
             quality=51,
         )

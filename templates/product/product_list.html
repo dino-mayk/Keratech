@@ -7,7 +7,7 @@
     {% for type, products in grouped_products.items %}
         <h1 class="text-center">{{ type }}</h1>
         {% for product in products %}
-            {% include 'includes/product_card.html' with product=product images=grouped_images|get_value:product.id %}
+            {% include 'includes/product_card.html' with product=product images=grouped_images|get_value:product.id product_id=product.id %}
         {% endfor %}
     {% endfor %}
 </div>

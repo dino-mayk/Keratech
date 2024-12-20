@@ -35,12 +35,33 @@ def type_detail(request, slug):
     template_name = 'product/type_detail.html'
 
     type = get_object_or_404(Type, slug=slug)
-    products_for_type = group_products_by_types(Product.objects.all())[type]
+
+    all_products = Product.objects.all()
+    all_images = ProductGallery.objects.all()
+
+    products_for_type = None
+    images_for_products = None
+
+    # здесь требуется придумать логику функции group_products_by_types
+    # и group_images_by_products дабы можно было добавлять туда
+    # дополнительные опциональные условие для валидации объектов
+
+    if len(all_products) > 0:
+        products_for_type = group_products_by_types(all_products)[type]
+
+        images_for_products = group_images_by_products(all_images)
+
+        images_for_products = [
+            x
+            for x in images_for_products
+            if x in products_for_type
+        ]
 
     context = {
         'title': type.title,
         'type': type,
         'products_for_type': products_for_type,
+        'images_for_products': images_for_products,
     }
 
     return render(request, template_name, context)

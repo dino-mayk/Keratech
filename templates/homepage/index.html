@@ -19,14 +19,14 @@
     <div class="carousel-inner">
       {% if carousel_img_active != None %}
         <div class="carousel-item active">
-          <img width="100%" height="100%" src="{{ carousel_img_active }}">
+          <img style="object-fit: cover;" width="100%" height="100%" src="{{ carousel_img_active }}">
         </div>
       {% else %}
-        <img width="100%" height="100%" src="{% static 'apps/homepage/404.jpg' %}">
+        <img style="object-fit: cover;" width="100%" height="100%" src="{% static 'apps/homepage/404.jpg' %}">
       {% endif %}
       {% for carousel_img in carousel_imgs %}
         <div class="carousel-item">
-          <img width="100%" height="100%" src="{{ carousel_img }}">
+          <img style="object-fit: cover;" width="100%" height="100%" src="{{ carousel_img }}">
         </div>
       {% endfor %}
     </div>
@@ -44,7 +44,7 @@
 
 <hr class="featurette-divider m-2 p-2">
 
-<div class="container about p-2">
+<div class="container p-2">
   {% for type in types %}
     <div class="row featurette align-items-center">
       {% if forloop.counter|divisibleby:2 %}
@@ -61,8 +61,9 @@
       {% else %}
         <div class="col-md-5">
       {% endif %}
-          <img src="{{ type.photo.url }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фотография">
-          <a class="btn btn-light m-2" href="{% url 'product:type_detail' type.slug %}" role="button">Подробнее</a>
+          <a href="{% url 'product:type_detail' type.slug %}">
+            <img src="{{ type.photo.url }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фотография">
+          </a>
         </div>
     </div>
 

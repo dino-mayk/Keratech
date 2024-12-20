@@ -8,6 +8,7 @@ from product.models import Product, ProductGallery, Type
 class TypeAdmin(admin.ModelAdmin):
     list_display = [
         'title',
+        'img_tmb',
     ]
 
 
@@ -15,6 +16,7 @@ class TypeAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = [
         'title',
+        'img_tmb',
     ]
 
 

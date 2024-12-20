@@ -4,8 +4,6 @@
 
 {% block content %}
 
-<link href="{% static 'apps/product/detail.css' %}" rel="stylesheet">
-
 <div class="container mt-3 pt-3 mb-3 pb-3 mx-auto">
     <div class="row">
         <div class="col-lg-6 d-flex flex-col flex-wrap justify-content-center">
@@ -20,11 +18,11 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="{{ product.photo.url }}" class="d-block" alt="Фото карусели">
+                    <img src="{{ product.photo.url }}" class="featurette-image img-fluid mx-auto" alt="Фото карусели">
                   </div>
                   {% for product_gallery in product_gallery %}
                   <div class="carousel-item">
-                    <img src="{{ product_gallery }}" class="d-block" alt="Фото карусели">
+                    <img src="{{ product_gallery }}" class="featurette-image img-fluid mx-auto" alt="Фото карусели">
                   </div>
                   {% endfor %}
                 </div>
