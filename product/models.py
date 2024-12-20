@@ -7,7 +7,6 @@ from sorl.thumbnail import delete, get_thumbnail
 from transliterate import slugify
 
 from core.validators import validate_image_aspect_ratio
-from product.managers import ProductGalleryManager
 
 
 class Type(models.Model):
@@ -187,7 +186,6 @@ class ProductGallery(models.Model):
         verbose_name="Продукт",
         help_text='Выберете продукт'
     )
-    objects = ProductGalleryManager()
 
     @property
     def get_img(self):

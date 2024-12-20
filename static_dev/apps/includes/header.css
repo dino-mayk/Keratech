@@ -24,7 +24,7 @@ header {
   content: "";
   position: relative;
   top: -7px;
-  transition: all 0.15s ease-out;/*taken down to hide quicker*/
+  transition: all 0.15s ease-out;
   transform-origin: center;
 }
   

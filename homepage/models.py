@@ -4,7 +4,6 @@ from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
 
 from core.validators import validate_image_aspect_ratio
-from homepage.managers import CarouselImgManager
 
 
 class CarouselImg(models.Model):
@@ -15,7 +14,6 @@ class CarouselImg(models.Model):
         null=True,
         validators=[lambda image: validate_image_aspect_ratio(image, (16, 9))],
     )
-    objects = CarouselImgManager()
 
     @property
     def get_img(self):

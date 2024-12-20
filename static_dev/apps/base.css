@@ -1,8 +1,18 @@
 main {
     background-color: #5cb3e2;
-    font-family: 'Bender', Arial, sans-serif;
     padding-top: 105px;
     ::selection {
         background-color: white;
     }
+}
+
+@font-face {
+    font-family: 'Bender';
+    src: url('../fonts/Bender.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Bender', Arial, sans-serif;
 }

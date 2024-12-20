@@ -4,12 +4,15 @@
 {% block content %}
 
 <div class="row justify-content-center m-2">
-    {% for type, products in grouped_products.items %}
-        <h1 class="text-center">{{ type }}</h1>
-        {% for product in products %}
-            {% include 'includes/product_card.html' with product=product images=grouped_images|get_value:product.id product_id=product.id %}
+    {% regroup products by type as product_list %}
+
+    {% for product_type in product_list %}
+        <h1 class="text-center">{{ product_type.grouper }}</h1>
+        {% for product in product_type.list %}
+            {% include 'includes/product_card.html' with product=product images=product.productgallery_set.all product_id=product.id %}
         {% endfor %}
     {% endfor %}
 </div>
 
 {% endblock content %}
+
