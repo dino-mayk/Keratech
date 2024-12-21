@@ -6,12 +6,6 @@ from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
 from transliterate import slugify
 
-from core.validators import validate_image_aspect_ratio
-
-
-def validate_image_aspect_ratio_func(image):
-    validate_image_aspect_ratio(image, (4, 3))
-
 
 class Type(models.Model):
     title = models.CharField(
@@ -34,7 +28,6 @@ class Type(models.Model):
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
-        validators=[validate_image_aspect_ratio_func],
     )
     pub_date = models.DateTimeField(
         'Дата публикации',
@@ -45,7 +38,7 @@ class Type(models.Model):
     def get_img(self):
         return get_thumbnail(
             self.photo,
-            '320x240',
+            '300x300',
             crop='center',
             quality=51,
         )
@@ -113,7 +106,6 @@ class Product(models.Model):
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
-        validators=[validate_image_aspect_ratio_func],
     )
     type = models.ForeignKey(
         Type,
@@ -130,7 +122,7 @@ class Product(models.Model):
     def get_img(self):
         return get_thumbnail(
             self.photo,
-            '320x240',
+            '300x300',
             crop='center',
             quality=51,
         )
@@ -182,7 +174,6 @@ class ProductGallery(models.Model):
         upload_to='uploads/img/product/gallery/%Y/%m',
         verbose_name="Изображение",
         help_text='загрузите изображение',
-        validators=[validate_image_aspect_ratio_func],
     )
     product = models.ForeignKey(
         Product,
@@ -195,7 +186,7 @@ class ProductGallery(models.Model):
     def get_img(self):
         return get_thumbnail(
             self.photo,
-            '320x240',
+            '300x300',
             crop='center',
             quality=51,
         )
