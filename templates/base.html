@@ -1,4 +1,5 @@
 {% load static %}
+{% load meta_tags %}
 
 
 <!DOCTYPE html>
@@ -17,11 +18,10 @@
     <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
     <meta name="msapplication-TileColor" content="#57a0c8">
     <meta name="theme-color" content="#ffffff">
-
     <title>{{ title }}</title>
-
-    <meta name="google-site-verification" content="Qc3XVOwqBRciJirixNeg-pCKDl0QLaLfnPqMfmBqs8o" />
-    <meta name="yandex-verification" content="0c2131a7ec1b2fb8" />
+    {% block meta_tags %}
+        {% include_meta_tags %}
+    {% endblock %}
 </head>
 <body>
     {% include "includes/header.html" %}

@@ -20,6 +20,10 @@
       {% if carousel_img_active != None %}
         <div class="carousel-item active">
           <img style="object-fit: cover;" width="100%" height="100%" src="{{ carousel_img_active }}">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>{{ carousel_img_active.title }}</h1>
+            <p>{{ carousel_img_active.description }}</p>
+          </div>
         </div>
       {% else %}
         <img style="object-fit: cover;" width="100%" height="100%" src="{% static 'apps/homepage/404.jpg' %}">
@@ -27,6 +31,10 @@
       {% for carousel_img in carousel_imgs %}
         <div class="carousel-item">
           <img style="object-fit: cover;" width="100%" height="100%" src="{{ carousel_img }}">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>{{ carousel_img_active.title }}</h1>
+            <p>{{ carousel_img_active.description }}</p>
+          </div>
         </div>
       {% endfor %}
     </div>

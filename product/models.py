@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
+from tinymce.models import HTMLField
 from transliterate import slugify
 
 
@@ -97,7 +98,7 @@ class Product(models.Model):
         help_text="""Это поле опционально, вы можете его не заполнять,
                  алгоритм сгенерирует slug за вас.""",
     )
-    description = models.TextField(
+    description = HTMLField(
         verbose_name='Описание',
         help_text='Введите ваше описание продукта',
     )

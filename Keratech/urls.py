@@ -20,6 +20,11 @@ urlpatterns = [
     ),
 
     path(
+        'tinymce/',
+        include('tinymce.urls'),
+    ),
+
+    path(
         '',
         include('homepage.urls'), name='homepage',
     ),
@@ -27,21 +32,6 @@ urlpatterns = [
         'product/',
         include('product.urls'), name='product',
     ),
-
-    # path(
-    #     'map/',
-    #     include('map.urls'),
-    #     name='map',
-    # ),
-
-    # path(
-    #     'ckeditor/',
-    #     include('ckeditor_uploader.urls'),
-    # ),
-    # path(
-    #     'djeym/',
-    #     include('djeym.urls', namespace='djeym'),
-    # ),
 
     path(
         "robots.txt",
@@ -57,15 +47,6 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns += [
-        path(
-            '__debug__/',
-            include(
-                debug_toolbar.urls,
-            ),
-        ),
-    ]
     urlpatterns += static(
         settings.MEDIA_URL,
         document_root=settings.MEDIA_ROOT,

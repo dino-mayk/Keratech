@@ -5,6 +5,14 @@ from sorl.thumbnail import delete, get_thumbnail
 
 
 class CarouselImg(models.Model):
+    title = models.CharField(
+        'Заголовок слайда',
+        max_length=150,
+    )
+    description = models.TextField(
+        verbose_name='Описание',
+        help_text='Введите ваше описание слайда',
+    )
     photo = models.ImageField(
         upload_to='uploads/img/carousel/%Y/%m',
         verbose_name='Изображение',
