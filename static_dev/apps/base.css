@@ -8,7 +8,9 @@ main {
 
 @font-face {
     font-family: 'Bender';
-    src: url('../fonts/Bender.otf') format('woff2');
+    src: url('../fonts/Bender.woff2') format('woff2'),
+         url('../fonts/Bender.woff') format('woff'),
+         url('../fonts/Bender.otf') format('otf');
     font-weight: normal;
     font-style: normal;
 }

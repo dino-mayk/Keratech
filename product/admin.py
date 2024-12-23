@@ -1,6 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group
-from metatags.admin import MetaTagInline
 
 from product.models import Product, ProductGallery, Type
 
@@ -27,10 +25,3 @@ class ProductGalleryAdmin(admin.ModelAdmin):
         'product',
         'img_tmb',
     ]
-
-
-class CustomModelAdmin(admin.ModelAdmin):
-    inlines = (MetaTagInline, )
-
-
-admin.site.unregister(Group)

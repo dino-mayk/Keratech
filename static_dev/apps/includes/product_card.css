@@ -1,7 +1,7 @@
 .card {
-    border: none;
-    padding-left: 0;
-    padding-right: 0;
+    border: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     max-width: 500px;
     margin: 25px;
     text-align: center;
@@ -10,6 +10,23 @@
 .card img {
     height: 450px;
     width: 100%;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
+}
+  
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+  
+.card .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
 }
 
 @media (max-width: 450px) { 

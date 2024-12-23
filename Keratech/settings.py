@@ -27,11 +27,6 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = [
-    'sorl.thumbnail',
-    'django_cleanup.apps.CleanupConfig',
-    'metatags',
-    'tinymce',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +37,12 @@ INSTALLED_APPS = [
 
     'homepage',
     'product',
+    'core',
+
+    'sorl.thumbnail',
+    'django_cleanup.apps.CleanupConfig',
+    'tinymce',
+    'meta',
 ]
 
 MIDDLEWARE = [

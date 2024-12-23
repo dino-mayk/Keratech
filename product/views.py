@@ -4,6 +4,15 @@ from django.shortcuts import get_object_or_404, render
 from product.models import Product, ProductGallery, Type
 
 
+from meta.views import Meta
+
+meta = Meta(
+    title="Sam's awesome ponies",
+    description='Awesome page about ponies',
+    keywords=['pony', 'ponies', 'awesome'],
+)
+
+
 def type_detail(request, slug):
     template_name = 'product/type_detail.html'
     type = get_object_or_404(Type, slug=slug)
@@ -17,6 +26,7 @@ def type_detail(request, slug):
     context = {
         'title': type.title,
         'type': type,
+        'meta': type.as_meta(),
         'products_for_type': products_for_type,
     }
 
@@ -29,6 +39,7 @@ def product_list(request):
 
     context = {
         'title': 'Каталог',
+        'meta': meta,
         'products': products,
     }
 

@@ -39,4 +39,8 @@
     <div class="card-body">
       <h5 class="card-title">{{ product.title }}</h5>
     </div>
+
+    <div class="card-footer">
+      <a class="btn btn-primary" href="{% url 'product:product_detail' product.slug %}" role="button">Подробнее</a>
+    </div>
 </div>

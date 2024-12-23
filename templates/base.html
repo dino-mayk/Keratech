@@ -1,10 +1,10 @@
 {% load static %}
-{% load meta_tags %}
+{% load meta %}
 
 
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+<head {% meta_namespaces %}>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +19,7 @@
     <meta name="msapplication-TileColor" content="#57a0c8">
     <meta name="theme-color" content="#ffffff">
     <title>{{ title }}</title>
-    {% block meta_tags %}
-        {% include_meta_tags %}
-    {% endblock %}
+    {% include "meta/meta.html" %}
 </head>
 <body>
     {% include "includes/header.html" %}

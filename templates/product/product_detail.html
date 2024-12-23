@@ -20,11 +20,11 @@
                 </div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="{{ product.photo.url }}" class="featurette-image img-fluid mx-auto" alt="Фото карусели">
+                    <img src="{{ product.photo.url }}" class="featurette-image img-fluid mx-auto rounded shadow-sm" alt="Фото карусели">
                   </div>
                   {% for product_gallery in product_gallery %}
                   <div class="carousel-item">
-                    <img src="{{ product_gallery }}" class="featurette-image img-fluid mx-auto" alt="Фото карусели">
+                    <img src="{{ product_gallery }}" class="featurette-image img-fluid mx-auto rounded shadow-sm" alt="Фото карусели">
                   </div>
                   {% endfor %}
                 </div>
@@ -48,3 +48,4 @@
 </div>
 
 {% endblock %}
+

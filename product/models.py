@@ -6,9 +6,10 @@ from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
 from tinymce.models import HTMLField
 from transliterate import slugify
+from meta.models import ModelMeta
 
 
-class Type(models.Model):
+class Type(ModelMeta, models.Model):
     title = models.CharField(
         'Тип продукции',
         max_length=150,
@@ -34,6 +35,12 @@ class Type(models.Model):
         'Дата публикации',
         auto_now_add=True,
     )
+
+    _metadata = {
+        'title': title,
+        'description': description,
+        'keywords': ['привет', 'мир']
+    }
 
     @property
     def get_img(self):
@@ -86,7 +93,7 @@ class Type(models.Model):
         verbose_name_plural = 'Типы продукции'
 
 
-class Product(models.Model):
+class Product(ModelMeta, models.Model):
     title = models.CharField(
         'Название продукта',
         max_length=150,
@@ -118,6 +125,12 @@ class Product(models.Model):
         'Дата публикации',
         auto_now_add=True,
     )
+
+    _metadata = {
+        'title': 'title',
+        'description': 'content',
+        'keywords': ['привет', 'мир']
+    }
 
     @property
     def get_img(self):
