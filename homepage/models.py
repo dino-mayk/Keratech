@@ -3,6 +3,12 @@ from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
 from sorl.thumbnail import delete, get_thumbnail
 
+from core.validators import validate_image_aspect_ratio
+
+
+def validate_image_aspect_ratio_func(image):
+    validate_image_aspect_ratio(image, (16, 9))
+
 
 class CarouselImg(models.Model):
     title = models.CharField(
@@ -18,6 +24,7 @@ class CarouselImg(models.Model):
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
+        validators=[validate_image_aspect_ratio_func],
     )
 
     @property

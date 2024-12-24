@@ -3,10 +3,10 @@ from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
+from meta.models import ModelMeta
 from sorl.thumbnail import delete, get_thumbnail
 from tinymce.models import HTMLField
 from transliterate import slugify
-from meta.models import ModelMeta
 
 
 class Type(ModelMeta, models.Model):
@@ -37,9 +37,8 @@ class Type(ModelMeta, models.Model):
     )
 
     _metadata = {
-        'title': title,
-        'description': description,
-        'keywords': ['привет', 'мир']
+        'title': 'title',
+        'description': 'description',
     }
 
     @property
@@ -128,8 +127,7 @@ class Product(ModelMeta, models.Model):
 
     _metadata = {
         'title': 'title',
-        'description': 'content',
-        'keywords': ['привет', 'мир']
+        'description': 'description',
     }
 
     @property

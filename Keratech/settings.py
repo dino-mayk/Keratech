@@ -142,3 +142,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CSRF_COOKIE_HTTPONLY = False
+
+META_USE_TITLE_TAG = True
