@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Bender';
+    src: url('../../fonts/Bender.woff2') format('woff2'),
+        url('../../fonts/Bender.woff') format('woff'),
+        url('../../fonts/Bender.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+ }
+
+ body {
+     font-family: 'Bender', Arial, sans-serif;
+     background-color: #5cb3e2;
+     color: white;
+     font-size: 100%;
+     line-height: 1.5;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     min-height: 100vh;
+     margin: 0;
+ }
+
+ .btn-outline-light {
+     font-weight: 200;
+     color: white;
+     font-size: 2.5em;
+     text-decoration: none;
+     border: 5px solid white;
+     padding: .5em;
+     border-radius: 3px;
+     transition: all .3s linear;
+ }
+
+ .btn-outline-light:hover {
+     background-color: #5cb3e2;
+     color: white;
+ }
+
+ p {
+     font-size: 3em;
+     text-align: center;
+     font-weight: 200;
+ }
+
+ h1 {
+     text-align: center;
+     font-size: 25em;
+     font-weight: 200;
+ }

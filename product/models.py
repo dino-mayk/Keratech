@@ -1,4 +1,4 @@
-
+from bs4 import BeautifulSoup
 from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -127,7 +127,7 @@ class Product(ModelMeta, models.Model):
 
     _metadata = {
         'title': 'title',
-        'description': 'description',
+        'description': 'get_cleaned_description',
     }
 
     @property
@@ -169,6 +169,12 @@ class Product(ModelMeta, models.Model):
 
         self.slug = slug
         super().save(*args, **kwargs)
+
+    def get_cleaned_description(self):
+        if self.description:
+            soup = BeautifulSoup(self.description, "html.parser")
+            return soup.get_text()
+        return ""
 
     def __str__(self):
         return self.title

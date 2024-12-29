@@ -6,6 +6,6 @@ from homepage.models import CarouselImg
 @admin.register(CarouselImg)
 class AdminCarouselImg(admin.ModelAdmin):
     list_display = [
-        'id',
+        'priority',
         'img_tmb',
     ]

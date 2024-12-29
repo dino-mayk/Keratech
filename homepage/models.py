@@ -11,20 +11,17 @@ def validate_image_aspect_ratio_func(image):
 
 
 class CarouselImg(models.Model):
-    title = models.CharField(
-        'Заголовок слайда',
-        max_length=150,
-    )
-    description = models.TextField(
-        verbose_name='Описание',
-        help_text='Введите ваше описание слайда',
-    )
     photo = models.ImageField(
         upload_to='uploads/img/carousel/%Y/%m',
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
         validators=[validate_image_aspect_ratio_func],
+    )
+    priority = models.PositiveSmallIntegerField(
+        default=0,
+        verbose_name='Приоритет',
+        help_text='Чем меньше число, тем выше приоритет (0 - самый высокий)',
     )
 
     @property
@@ -57,3 +54,4 @@ class CarouselImg(models.Model):
     class Meta:
         verbose_name = 'Изображение карусели'
         verbose_name_plural = 'Изображения карусели'
+        ordering = ['priority']
