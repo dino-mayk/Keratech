@@ -6,7 +6,7 @@ from django_cleanup.signals import cleanup_pre_delete
 from meta.models import ModelMeta
 from sorl.thumbnail import delete, get_thumbnail
 from tinymce.models import HTMLField
-from transliterate import slugify
+from slugify import slugify
 
 
 class Type(ModelMeta, models.Model):
@@ -67,9 +67,6 @@ class Type(ModelMeta, models.Model):
 
     def save(self, *args, **kwargs):
         slug_candidate = slugify(self.title)
-
-        if slug_candidate is None:
-            slug_candidate = 'obj'
 
         counter = 1
         slug = slug_candidate
@@ -156,9 +153,6 @@ class Product(ModelMeta, models.Model):
 
     def save(self, *args, **kwargs):
         slug_candidate = slugify(self.title)
-
-        if slug_candidate is None:
-            slug_candidate = 'obj'
 
         counter = 1
         slug = slug_candidate

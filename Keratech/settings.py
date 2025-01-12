@@ -1,7 +1,6 @@
 import os
 from os.path import dirname, join
 from pathlib import Path
-from sys import argv
 
 from dotenv import load_dotenv
 
@@ -9,7 +8,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 dotenv_path = join(dirname(__file__), '../dev.env')
 load_dotenv(dotenv_path)
-
 
 DEBUG = os.environ.get('DEBUG', default='True') == 'True'
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -21,10 +19,11 @@ PASSWORD = os.environ.get('PASSWORD')
 HOST = os.environ.get('HOST')
 PORT = os.environ.get('PORT')
 
+DOMEN = os.environ.get('DOMEN')
 
-ALLOWED_HOSTS = [
-    '*',
-]
+
+ALLOWED_HOSTS = ['*'] if DEBUG else [DOMEN, f'www.{DOMEN}']
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'meta',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,7 +55,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'Keratech.urls'
+
 
 TEMPLATES = [
     {
@@ -75,6 +77,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'Keratech.wsgi.application'
 
 
@@ -88,12 +91,6 @@ DATABASES = {
        'PORT': PORT,
     }
 }
-
-if 'test' in argv:
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase'
-    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -128,12 +125,14 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static_dev',
 ]
-STATIC_ROOT = BASE_DIR / 'static'
-MEDIA_ROOT = BASE_DIR / 'media'
+
 MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
