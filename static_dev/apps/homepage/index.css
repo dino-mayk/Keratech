@@ -7,8 +7,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   object-fit: cover;
-  width: 100%;
-  height: 100%;
 }
 
 .featurette .col-md-5 img:hover {
