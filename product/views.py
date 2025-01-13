@@ -27,6 +27,11 @@ def type_detail(request, slug):
 
 def product_list(request):
     template_name = 'product/product_list.html'
+
+    protocol = request.scheme
+    host = request.get_host()
+    base_url = f"{protocol}://{host}"
+
     meta = Meta(
         title='Каталог огнеупорных и изоляционных материалов КЕРАТЕХ',
         description='Каталог огнеупорных и изоляционных материалов КЕРАТЕХ.'
@@ -36,6 +41,24 @@ def product_list(request):
             'КЕРАТЕХ', 'огнеупорные материалы', 'изоляционные материалы',
             'сталеразливка', 'собственное производство',
         ],
+        url=request.build_absolute_uri(),
+        object_type='Organization',
+        site_name='Keratech',
+        schemaorg_type='Organization',
+        schemaorg_title='Keratech',
+        use_json_ld=True,
+        schema={
+            'image': f'{base_url}/static/favicon/logo_text.svg',
+            'url': base_url,
+            'logo': f'{base_url}/static/favicon/logo_text.svg',
+            'name': 'Catalog of refractory and insulating materials KERATECH.',
+            'description': 'Catalog of refractory and insulating materials '
+                    'KERATECH. Own production of refractory materials. '
+                    'Calculate the cost of plant manufacturing online or by '
+                    'phone +79507587027.',
+            'email': 'keratekh@yandex.ru',
+            'telephone': '+7-950-758-70-27',
+        }
     )
 
     products = Product.objects.all().prefetch_related('productgallery_set')

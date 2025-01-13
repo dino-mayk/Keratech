@@ -24,6 +24,9 @@ class CarouselImg(models.Model):
         help_text='Чем меньше число, тем выше приоритет (0 - самый высокий)',
     )
 
+    def __str__(self):
+        return self.photo.url
+
     @property
     def get_img(self):
         return get_thumbnail(
@@ -47,9 +50,6 @@ class CarouselImg(models.Model):
         delete(kwargs['file'])
 
     cleanup_pre_delete.connect(sorl_delete)
-
-    def __str__(self):
-        return self.photo.url
 
     class Meta:
         verbose_name = 'Изображение карусели'
