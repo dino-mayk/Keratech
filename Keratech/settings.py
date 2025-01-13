@@ -144,3 +144,5 @@ META_USE_TITLE_TAG = True
 META_USE_SCHEMAORG_PROPERTIES = True
 META_USE_OG_PROPERTIES = True
 META_DEFAULT_IMAGE = 'https://keratekh.ru/static/favicon/logo_text.svg'
+META_SITE_PROTOCOL = 'http' if DEBUG else 'https'
+META_SITE_DOMAIN = DOMEN
