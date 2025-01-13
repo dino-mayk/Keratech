@@ -15,13 +15,6 @@ class Type(ModelMeta, models.Model):
         help_text='Введите ваше название типа продукции',
         max_length=150,
     )
-    title_en = models.CharField(
-        verbose_name='Тип продукции на английском',
-        help_text='Введите ваше название типа продукции на английском',
-        max_length=150,
-        blank=True,
-        null=True,
-    )
     slug = models.SlugField(
         max_length=255,
         unique=True,
@@ -32,12 +25,6 @@ class Type(ModelMeta, models.Model):
     description = models.TextField(
         verbose_name='Описание',
         help_text='Введите ваше описание типа продукции',
-        blank=True,
-        null=True,
-    )
-    description_en = models.TextField(
-        verbose_name='Описание на английском',
-        help_text='Введите ваше описание типа продукции на английском',
         blank=True,
         null=True,
     )
@@ -55,21 +42,8 @@ class Type(ModelMeta, models.Model):
     _metadata = {
         'title': 'title',
         'description': 'description',
-        'site_name': 'Keratech',
-        'schemaorg_type': 'Organization',
-        'schemaorg_title': 'Keratech',
-        'use_json_ld': True,
-    }
-
-    _schema = {
-        'url': 'get_absolute_url',
         'image': 'get_image_absolute_url',
-        'name': 'title_en',
-        'headline': 'title_en',
-        'description': 'description_en',
-        'articleBody': 'description_en',
-        'datePublished': 'pub_date',
-        'publisher': 'Keratech',
+        'site_name': 'Keratech',
     }
 
     def __str__(self):
@@ -128,13 +102,6 @@ class Product(ModelMeta, models.Model):
         'Название продукта',
         max_length=150,
     )
-    title_en = models.CharField(
-        verbose_name='Название продукта на английском',
-        help_text='Введите ваше название продукта на английском',
-        max_length=150,
-        blank=True,
-        null=True,
-    )
     slug = models.SlugField(
         max_length=255,
         unique=True,
@@ -145,12 +112,6 @@ class Product(ModelMeta, models.Model):
     description = HTMLField(
         verbose_name='Описание',
         help_text='Введите ваше описание продукта',
-        blank=True,
-        null=True,
-    )
-    description_en = models.TextField(
-        verbose_name='Описание на английском',
-        help_text='Введите ваше описание продукта на английском',
         blank=True,
         null=True,
     )
@@ -174,21 +135,8 @@ class Product(ModelMeta, models.Model):
     _metadata = {
         'title': 'title',
         'description': 'description',
-        'site_name': 'Keratech',
-        'schemaorg_type': 'Organization',
-        'schemaorg_title': 'Keratech',
-        'use_json_ld': True,
-    }
-
-    _schema = {
-        'url': 'get_absolute_url',
         'image': 'get_image_absolute_url',
-        'name': 'title_en',
-        'headline': 'title_en',
-        'description': 'description_en',
-        'articleBody': 'description_en',
-        'datePublished': 'pub_date',
-        'publisher': 'Keratech',
+        'site_name': 'Keratech',
     }
 
     def __str__(self):
