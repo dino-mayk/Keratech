@@ -6,6 +6,23 @@ header {
   z-index: 100;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-left: -50px;
+}
+
+.nav-link {
+  margin: 0 15px;
+}
+
 .navbar-toggler-icon {
   background-image: none!important;
   background-color: var(--bs-gray-800);
