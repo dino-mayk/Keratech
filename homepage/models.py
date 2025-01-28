@@ -18,6 +18,16 @@ class CarouselImg(models.Model):
         null=True,
         validators=[validate_image_aspect_ratio_func],
     )
+    title = models.CharField(
+        'Заголовок слайда',
+        default='Заголовок слайда',
+        max_length=150,
+    )
+    description = models.TextField(
+        verbose_name='Описание',
+        default='Описание',
+        help_text='Введите ваше описание слайда',
+    )
     priority = models.PositiveSmallIntegerField(
         default=0,
         verbose_name='Приоритет',

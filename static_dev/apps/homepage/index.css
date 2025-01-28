@@ -1,5 +1,50 @@
-.carousel-item {
+.carousel-item,
+.carousel-item img {
   max-height: 825px;
+  width: 100%;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 15%;
+  top: 1%;
+  width: 70%;
+  text-align: center;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.carousel-caption h1 {
+  font-size: 2.5rem;
+}
+
+.carousel-caption p {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .carousel-item,
+  .carousel-item img {
+    max-height: 500px;
+  }
+  .carousel-caption h1 {
+    font-size: 1.5rem;
+  }
+  .carousel-caption p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item,
+  .carousel-item img {
+    max-height: 300px;
+  }
+  .carousel-caption h1 {
+    font-size: 1.2rem;
+  }
+  .carousel-caption p {
+    font-size: 1rem;
+  }
 }
 
 .featurette .col-md-5 img {
