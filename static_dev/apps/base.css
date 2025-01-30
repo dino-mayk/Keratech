@@ -1,9 +1,13 @@
 main {
-    background-color: #5cb3e2;
+    background-color: white;
     padding-top: 105px;
     ::selection {
-        background-color: white;
+        background-color: #5cb3e2;
     }
+}
+
+h1 {
+    color: #5cb3e2;
 }
 
 @font-face {
