@@ -46,14 +46,14 @@
 
 <div class="container p-2">
   {% for type in types %}
-    <div class="row featurette text-center">
+    <div class="row featurette">
       {% if forloop.counter|divisibleby:2 %}
         <div class="col-md-7 order-md-2">
       {% else %}
         <div class="col-md-7">
       {% endif %}
-          <h1 class="featurette-heading fw-normal lh-1">{{ type.title }}</h1>
-          <p class="lead">{{ type.description }}</p>
+          <h1 class="featurette-heading fw-normal lh-1 text-center">{{ type.title }}</h1>
+          <p class="lead">{{ type.description|safe}}</p>
         </div>
       
       {% if forloop.counter|divisibleby:2 %}

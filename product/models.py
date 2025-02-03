@@ -22,7 +22,7 @@ class Type(ModelMeta, models.Model):
         help_text="""Это поле опционально, вы можете его не заполнять,
                  алгоритм сгенерирует slug за вас""",
     )
-    description = models.TextField(
+    description = HTMLField(
         verbose_name='Описание',
         help_text='Введите ваше описание типа продукции',
         blank=True,
@@ -41,7 +41,7 @@ class Type(ModelMeta, models.Model):
 
     _metadata = {
         'title': 'title',
-        'description': 'description',
+        'description': 'get_cleaned_description',
         'image': 'get_image_absolute_url',
         'site_name': 'Keratech',
     }
@@ -54,6 +54,12 @@ class Type(ModelMeta, models.Model):
 
     def get_image_absolute_url(self):
         return self.photo.url
+
+    def get_cleaned_description(self):
+        if self.description:
+            soup = BeautifulSoup(self.description, "html.parser")
+            return soup.get_text()
+        return ""
 
     @property
     def get_img(self):
@@ -134,7 +140,7 @@ class Product(ModelMeta, models.Model):
 
     _metadata = {
         'title': 'title',
-        'description': 'description',
+        'description': 'get_cleaned_description',
         'image': 'get_image_absolute_url',
         'site_name': 'Keratech',
     }
