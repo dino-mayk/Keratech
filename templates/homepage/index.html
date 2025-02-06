@@ -28,7 +28,7 @@
       {% endfor %}
       {% else %}
          <h1 class="text-center"><b>На данный момент в карусели нет фото</b></h1>
-       {% endif %}
+      {% endif %}
     </div>
     {% if carousel_imgs|length > 1 %}
       <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
@@ -45,31 +45,35 @@
 <hr class="featurette-divider m-2 p-2">
 
 <div class="container p-5 text">
-  {% for type in types %}
-    <div class="row featurette">
-      {% if forloop.counter|divisibleby:2 %}
-        <div class="col-md-7 order-md-2">
-      {% else %}
-        <div class="col-md-7">
-      {% endif %}
-          <h1 class="featurette-heading fw-normal lh-1"><b>{{ type.title }}</b></h1>
-          <p class="lead">{{ type.description|safe}}</p>
-        </div>
-      
-      {% if forloop.counter|divisibleby:2 %}
-        <div class="col-md-5 order-md-1">
-      {% else %}
-        <div class="col-md-5">
-      {% endif %}
-          <a href="{% url 'product:type_detail' type.slug %}">
-            <img src="{{ type.photo.url }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фото типа продукции">
-          </a>
-        </div>
-    </div>
+  {% if types %}
+    {% for type in types %}
+      <div class="row featurette">
+        {% if forloop.counter|divisibleby:2 %}
+          <div class="col-md-7 order-md-2">
+        {% else %}
+          <div class="col-md-7">
+        {% endif %}
+            <h1 class="featurette-heading fw-normal lh-1"><b>{{ type.title }}</b></h1>
+            <p class="lead">{{ type.description|safe}}</p>
+          </div>
+        
+        {% if forloop.counter|divisibleby:2 %}
+          <div class="col-md-5 order-md-1">
+        {% else %}
+          <div class="col-md-5">
+        {% endif %}
+            <a href="{% url 'product:type_detail' type.slug %}">
+              <img src="{{ type.photo.url }}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" alt="Фото типа продукции">
+            </a>
+          </div>
+      </div>
 
-    <hr class="featurette-divider p-5">
+      <hr class="featurette-divider p-5">
 
-  {% endfor %}
+    {% endfor %}
+  {% else %}
+    <h1 class="text-center"><b>На данный момент нет типов продукции</b></h1>
+  {% endif %}
 </div>
 
 

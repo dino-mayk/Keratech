@@ -5,12 +5,16 @@
 <div class="row justify-content-center p-5">
     {% regroup products by type as product_list %}
 
-    {% for product_type in product_list %}
-        <h1 class="text-center"><b>{{ product_type.grouper }}</b></h1>
-        {% for product in product_type.list %}
-            {% include 'includes/product_card.html' with product=product images=product.productgallery_set.all product_id=product.id %}
+    {% if product_list %}
+        {% for product_type in product_list %}
+            <h1 class="text-center"><b>{{ product_type.grouper }}</b></h1>
+            {% for product in product_type.list %}
+                {% include 'includes/product_card.html' with product=product images=product.productgallery_set.all product_id=product.id %}
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
+    {% else %}
+        <h1 class="text-center"><b>На данный момент нет продукции</b></h1>
+    {% endif %}
 </div>
 
 {% endblock content %}
