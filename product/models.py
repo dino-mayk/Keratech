@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
-from froala_editor.fields import FroalaField
 from meta.models import ModelMeta
 from slugify import slugify
 from sorl.thumbnail import delete, get_thumbnail
@@ -22,7 +22,7 @@ class Type(ModelMeta, models.Model):
         help_text="""Это поле опционально, вы можете его не заполнять,
                  алгоритм сгенерирует slug за вас""",
     )
-    description = FroalaField(
+    description = RichTextUploadingField(
         verbose_name='Описание',
         help_text='Введите ваше описание типа продукции',
         blank=True,
@@ -115,7 +115,7 @@ class Product(ModelMeta, models.Model):
         help_text="""Это поле опционально, вы можете его не заполнять,
                  алгоритм сгенерирует slug за вас.""",
     )
-    description = FroalaField(
+    description = RichTextUploadingField(
         verbose_name='Описание',
         help_text='Введите ваше описание продукта',
         blank=True,

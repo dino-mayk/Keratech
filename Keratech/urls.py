@@ -22,8 +22,8 @@ urlpatterns = [
     ),
 
     path(
-        'froala_editor/',
-        include('froala_editor.urls'),
+        'ckeditor/',
+        include('ckeditor_uploader.urls'),
     ),
 
     path(

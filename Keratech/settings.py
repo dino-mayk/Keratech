@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'django_cleanup.apps.CleanupConfig',
     'meta',
-    'froala_editor',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 
@@ -138,21 +139,70 @@ MEDIA_ROOT = 'media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-FROALA_EDITOR_OPTIONS = {
-    'quickInsertEnabled': False,
-    'language': 'ru',
-    'toolbarButtons': [
-        'bold', 'italic', 'underline', 'strikeThrough',
-        'fontSize', 'color',
-        'paragraphFormat', 'align',
-        'formatOL', 'formatUL',
-        'insertTable',
-        'undo', 'redo',
-    ],
-    'height': 500,
-    'width': 500,
-    'charCounterCount': True,
-    'toolbarInline': False,
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'language': 'ru',
+        'toolbar': [
+            {
+                'name': 'basicstyles', 'items': [
+                    'Bold',
+                    'Italic',
+                    'Underline',
+                    'Strike',
+                ]
+            },
+            {
+                'name': 'paragraph',
+                'items': [
+                    'Format',
+                    'JustifyLeft',
+                    'JustifyCenter',
+                    'JustifyRight',
+                    'JustifyBlock',
+                ]
+            },
+            {
+                'name': 'list',
+                'items': [
+                    'NumberedList',
+                    'BulletedList',
+                ]
+            },
+            {
+                'name': 'links',
+                'items': [
+                    'Undo',
+                    'Redo',
+                ]
+            },
+            {
+                'name': 'insert',
+                'items': [
+                    'Table',
+                ]
+            },
+            {
+                'name': 'styles',
+                'items': [
+                    'FontSize',
+                    'TextColor',
+                ]
+            },
+        ],
+        'height': 500,
+        'width': 500,
+        'allowedContent': True,
+        'extraPlugins': ','.join([
+            'uploadimage',
+            'div',
+            'autolink',
+            'autogrow',
+        ]),
+        'removePlugins': 'stylesheetparser',
+        'charCounterCount': True,
+        'forcePasteAsPlainText': True,
+    },
 }
 
 
