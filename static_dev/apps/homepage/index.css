@@ -4,14 +4,11 @@
   width: 100%;
 }
 
-.carousel-caption h1 {
-  color: white;
+.featurette h1 {
+  font-size: 20px;
 }
 
 .featurette p {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 20px;
   line-height: 2;
 }
 

@@ -40,8 +40,8 @@ INSTALLED_APPS = [
 
     'sorl.thumbnail',
     'django_cleanup.apps.CleanupConfig',
-    'tinymce',
     'meta',
+    'froala_editor',
 ]
 
 
@@ -136,6 +136,24 @@ MEDIA_ROOT = 'media/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+FROALA_EDITOR_OPTIONS = {
+    'quickInsertEnabled': False,
+    'language': 'ru',
+    'toolbarButtons': [
+        'bold', 'italic', 'underline', 'strikeThrough',
+        'fontSize', 'color',
+        'paragraphFormat', 'align',
+        'formatOL', 'formatUL',
+        'insertTable',
+        'undo', 'redo',
+    ],
+    'height': 500,
+    'width': 500,
+    'charCounterCount': True,
+    'toolbarInline': False,
+}
 
 
 CSRF_COOKIE_HTTPONLY = False
