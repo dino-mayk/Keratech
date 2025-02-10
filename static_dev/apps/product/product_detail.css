@@ -24,13 +24,13 @@ tbody, td, tfoot, th, thead, tr {
     .carousel,
     .carousel-item img {
         position: static;
+        width: 100%;
     }
 }
 
 @media (max-width: 500px) { 
     .carousel,
     .carousel-item img {
-        width: 300px;
         height: 300px;
     }
 }
@@ -38,7 +38,6 @@ tbody, td, tfoot, th, thead, tr {
 @media (max-width: 400px) { 
     .carousel,
     .carousel-item img {
-        width: 250px;
         height: 250px;
     }
 }
