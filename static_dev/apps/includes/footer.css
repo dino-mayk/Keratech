@@ -1,3 +1,8 @@
+footer {
+    position: fixed;
+    bottom: 0;
+}
+
 .list-group-item.phone a {
     color: #5cb3e2;
     text-decoration: none;
