@@ -1,9 +1,14 @@
+.content,
 .carousel,
 .carousel-item img {
     width: 500px;
     height: 500px;
-    position: fixed;
     margin: 0 auto;
+}
+
+.carousel,
+.carousel-item img {
+    position: fixed;
 }
 
 tbody, td, tfoot, th, thead, tr {
@@ -12,7 +17,8 @@ tbody, td, tfoot, th, thead, tr {
     border-width: 1px;
 }
 
-@media (max-width: 1200px) { 
+@media (max-width: 1200px) {
+    .content,
     .carousel,
     .carousel-item img {
         width: 400px;
@@ -20,7 +26,8 @@ tbody, td, tfoot, th, thead, tr {
     }
 }
 
-@media (max-width: 991px) { 
+@media (max-width: 991px) {
+    .content,
     .carousel,
     .carousel-item img {
         position: static;
@@ -28,14 +35,16 @@ tbody, td, tfoot, th, thead, tr {
     }
 }
 
-@media (max-width: 500px) { 
+@media (max-width: 500px) {
+    .content,
     .carousel,
     .carousel-item img {
         height: 300px;
     }
 }
 
-@media (max-width: 400px) { 
+@media (max-width: 400px) {
+    .content,
     .carousel,
     .carousel-item img {
         height: 250px;
