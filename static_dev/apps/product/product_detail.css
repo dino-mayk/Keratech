@@ -2,6 +2,8 @@
 .carousel-item img {
     width: 500px;
     height: 500px;
+    position: fixed;
+    margin: 0 auto;
 }
 
 tbody, td, tfoot, th, thead, tr {
@@ -10,7 +12,7 @@ tbody, td, tfoot, th, thead, tr {
     border-width: 1px;
 }
 
-@media (max-width: 500px) { 
+@media (max-width: 1200px) { 
     .carousel,
     .carousel-item img {
         width: 400px;
@@ -18,10 +20,25 @@ tbody, td, tfoot, th, thead, tr {
     }
 }
 
+@media (max-width: 991px) { 
+    .carousel,
+    .carousel-item img {
+        position: static;
+    }
+}
+
+@media (max-width: 500px) { 
+    .carousel,
+    .carousel-item img {
+        width: 300px;
+        height: 300px;
+    }
+}
+
 @media (max-width: 400px) { 
     .carousel,
     .carousel-item img {
-        width: 350px;
-        height: 350px;
+        width: 250px;
+        height: 250px;
     }
 }
