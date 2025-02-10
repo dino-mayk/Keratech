@@ -1,4 +1,3 @@
-.content,
 .carousel,
 .carousel-item img {
     width: 500px;
@@ -6,8 +5,7 @@
     margin: 0 auto;
 }
 
-.carousel,
-.carousel-item img {
+.carousel {
     position: fixed;
 }
 
@@ -18,7 +16,6 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 @media (max-width: 1200px) {
-    .content,
     .carousel,
     .carousel-item img {
         width: 400px;
@@ -27,7 +24,6 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 @media (max-width: 991px) {
-    .content,
     .carousel,
     .carousel-item img {
         position: static;
@@ -36,7 +32,6 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 @media (max-width: 500px) {
-    .content,
     .carousel,
     .carousel-item img {
         height: 300px;
@@ -44,7 +39,6 @@ tbody, td, tfoot, th, thead, tr {
 }
 
 @media (max-width: 400px) {
-    .content,
     .carousel,
     .carousel-item img {
         height: 250px;
