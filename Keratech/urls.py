@@ -22,17 +22,31 @@ urlpatterns = [
     ),
 
     path(
+        'chaining/',
+        include('smart_selects.urls'),
+    ),
+    path(
         'ckeditor/',
         include('ckeditor_uploader.urls'),
+    ),
+    path(
+        'djeym/',
+        include('djeym.urls', namespace='djeym'),
     ),
 
     path(
         '',
-        include('homepage.urls'), name='homepage',
+        include('homepage.urls'),
+        name='homepage',
     ),
     path(
         'product/',
-        include('product.urls'), name='product',
+        include('product.urls'),
+        name='product',
+    ),
+    path(
+        'about/', include('about.urls'),
+        name='about',
     ),
 
     path(

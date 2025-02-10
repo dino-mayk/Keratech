@@ -36,13 +36,18 @@ INSTALLED_APPS = [
 
     'homepage',
     'product',
+    'about',
     'core',
 
     'sorl.thumbnail',
     'django_cleanup.apps.CleanupConfig',
     'meta',
+    'imagekit',
     'ckeditor',
     'ckeditor_uploader',
+    'colorful',
+    'adminsortable',
+    'djeym',
 ]
 
 
@@ -54,6 +59,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django.middleware.locale.LocaleMiddleware',
+    'djeym.middlewares.AjaxMiddleware',
 ]
 
 
@@ -139,7 +147,11 @@ MEDIA_ROOT = 'media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_FILENAME_GENERATOR = 'djeym.utils.get_filename'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CKEDITOR_CONFIGS = {
     'default': {
         'language': 'ru',
@@ -203,7 +215,31 @@ CKEDITOR_CONFIGS = {
         'charCounterCount': True,
         'forcePasteAsPlainText': True,
     },
+    'djeym': {
+        'toolbar': 'full',
+        'height': 400,
+        'width': 362,
+        'colorButton_colors': 'FFFFFF,F08080,CD5C5C,FF0000,FF1493,C71585,'
+                              '800080,F0E68C,BDB76B,6A5ACD,483D8B,3CB371,'
+                              '008000,808000,2E8B57,9ACD32,20B2AA,008B8B,'
+                              '00BFFF,F4A460,CD853F,A52A2A,708090,34495e,'
+                              '999966,333333,82cdff,1e98ff,177bc9,0e4779,'
+                              '97a100,595959,b3b3b3,f371d1,b51eff,793d0e,'
+                              'ffd21e,ff931e,56db40,1bad03,e6761b,ed4543',
+        'colorButton_enableAutomatic': False,
+        'colorButton_enableMore': True
+    }
 }
+
+LOGIN_URL = '/admin/'
+
+JQUERY_URL = False
+USE_DJANGO_JQUERY = True
+
+DJEYM_YMAPS_API_KEY = ''
+
+DJEYM_YMAPS_ICONS_FOR_CATEGORIES_CSS = []
+DJEYM_YMAPS_ICONS_FOR_CATEGORIES_JS = []
 
 
 CSRF_COOKIE_HTTPONLY = False
