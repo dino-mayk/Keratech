@@ -21,6 +21,8 @@ PORT = os.environ.get('PORT')
 
 DOMEN = os.environ.get('DOMEN')
 
+DJEYM_YMAPS_API_KEY = os.environ.get('DJEYM_YMAPS_API_KEY')
+
 
 ALLOWED_HOSTS = ['*'] if DEBUG else [DOMEN, f'www.{DOMEN}']
 
@@ -235,8 +237,6 @@ LOGIN_URL = '/admin/'
 
 JQUERY_URL = False
 USE_DJANGO_JQUERY = True
-
-DJEYM_YMAPS_API_KEY = ''
 
 DJEYM_YMAPS_ICONS_FOR_CATEGORIES_CSS = []
 DJEYM_YMAPS_ICONS_FOR_CATEGORIES_JS = []
