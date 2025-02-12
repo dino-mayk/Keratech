@@ -5,17 +5,15 @@
 
 {% block content %}
 
-<link href="{% static 'apps/about/index.css' %}" rel="stylesheet">
-
-<div class="container">
-  <div class="row text-center">
-      <h1>Контакты</h1>
+<div class="container p-5">
+  <div class="row">
+      <h2><b>Контакты</b></h2>
       <ul class="list-group-flush">
         Номер: <a href="tel:89507587027" style="color: #5cb3e2; text-decoration: none;">8 (950) 758-70-27</a>
         <li class="list-group-item">Адрес: 394026, город Воронеж, ул. Плехановская, дом 66Б, офис 411 </li>
         <li class="list-group-item">Почта: keratekh@yandex.ru</li>
       </ul>
-      <h1>Мы на картах</h1>
+      <h2><b>Мы на картах</b></h2>
       <div class="col-12">
         <div id="djeym-app" class="djeym"></div>
         <script type="text/javascript" src="{% static "djeym/js/jquery.min.js" %}"></script>
