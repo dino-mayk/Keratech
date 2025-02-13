@@ -8,6 +8,7 @@ main {
 
 h1, h2 {
     color: #5cb3e2;
+    font-weight: 700 !important;
 }
 
 @font-face {
