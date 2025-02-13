@@ -7,13 +7,13 @@
 
     {% if product_list %}
         {% for product_type in product_list %}
-            <h1 class="text-center"><b>{{ product_type.grouper }}</b></h1>
+            <h1 class="text-center">{{ product_type.grouper }}</h1>
             {% for product in product_type.list %}
                 {% include 'includes/product_card.html' with product=product images=product.productgallery_set.all product_id=product.id %}
             {% endfor %}
         {% endfor %}
     {% else %}
-        <h1 class="text-center"><b>На данный момент нет продукции</b></h1>
+        <h1 class="text-center">На данный момент нет продукции</h1>
     {% endif %}
 </div>
 

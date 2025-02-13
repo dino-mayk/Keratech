@@ -7,7 +7,7 @@
 
 <section class="container text-center">
   <div class="row py-lg-5">
-    <h1><b>{{ type.title }}</b></h1>
+    <h1>{{ type.title }}</h1>
   </div>
 </section>
 
@@ -17,7 +17,7 @@
       {% include 'includes/product_card.html' with product=product images=product.images product_id=product.id %}
     {% endfor %}
   {% else %}
-    <h1 class="text-center"><b>Здесь пока отсутствует список продуктов.</b></h1>
+    <h1 class="text-center">Здесь пока отсутствует список продуктов.</h1>
   {% endif %}
   
 </div>
