@@ -18,11 +18,17 @@
     transition: box-shadow 0.3s ease;
     overflow: hidden;
 }
-  
+
+.card-footer {
+    background-color: white;
+    border: none;
+    text-align: left;
+}
+
 .card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-  
+
 .card .card-img-top {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
