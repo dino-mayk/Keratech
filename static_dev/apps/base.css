@@ -1,9 +1,20 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 main {
+    flex: 1;
     background-color: white;
     padding-top: 105px;
     ::selection {
         background-color: #5cb3e2;
     }
+}
+
+footer {
+    background-color: #f8f9fa;
 }
 
 h1, h2, a {
