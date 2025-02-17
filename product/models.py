@@ -19,8 +19,8 @@ class Type(ModelMeta, models.Model):
         max_length=255,
         unique=True,
         blank=True,
-        help_text="""Это поле опционально, вы можете его не заполнять,
-                 алгоритм сгенерирует slug за вас""",
+        help_text='Это поле опционально, вы можете его не заполнять, \
+                алгоритм сгенерирует slug за вас',
     )
     description = RichTextUploadingField(
         verbose_name='Описание',
@@ -57,9 +57,9 @@ class Type(ModelMeta, models.Model):
 
     def get_cleaned_description(self):
         if self.description:
-            soup = BeautifulSoup(self.description, "html.parser")
+            soup = BeautifulSoup(self.description, 'html.parser')
             return soup.get_text()
-        return ""
+        return ''
 
     @property
     def get_img(self):
@@ -92,7 +92,7 @@ class Type(ModelMeta, models.Model):
         slug = slug_candidate
 
         while Type.objects.filter(slug=slug).exists():
-            slug = slug_candidate + f"-{counter}"
+            slug = slug_candidate + f'-{counter}'
             counter += 1
 
         self.slug = slug
@@ -112,8 +112,8 @@ class Product(ModelMeta, models.Model):
         max_length=255,
         unique=True,
         blank=True,
-        help_text="""Это поле опционально, вы можете его не заполнять,
-                 алгоритм сгенерирует slug за вас.""",
+        help_text='Это поле опционально, вы можете его не заполнять, \
+                алгоритм сгенерирует slug за вас.',
     )
     description = RichTextUploadingField(
         verbose_name='Описание',
@@ -130,7 +130,7 @@ class Product(ModelMeta, models.Model):
     type = models.ForeignKey(
         Type,
         on_delete=models.CASCADE,
-        verbose_name="Тип продукции",
+        verbose_name='Тип продукции',
         help_text='Выберете тип продукции'
     )
     pub_date = models.DateTimeField(
@@ -156,9 +156,9 @@ class Product(ModelMeta, models.Model):
 
     def get_cleaned_description(self):
         if self.description:
-            soup = BeautifulSoup(self.description, "html.parser")
+            soup = BeautifulSoup(self.description, 'html.parser')
             return soup.get_text()
-        return ""
+        return ''
 
     @property
     def get_img(self):
@@ -191,7 +191,7 @@ class Product(ModelMeta, models.Model):
         slug = slug_candidate
 
         while Product.objects.filter(slug=slug).exists():
-            slug = slug_candidate + f"-{counter}"
+            slug = slug_candidate + f'-{counter}'
             counter += 1
 
         self.slug = slug
@@ -205,13 +205,13 @@ class Product(ModelMeta, models.Model):
 class ProductGallery(models.Model):
     photo = models.ImageField(
         upload_to='uploads/img/product/gallery/%Y/%m',
-        verbose_name="Изображение",
+        verbose_name='Изображение',
         help_text='загрузите изображение',
     )
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
-        verbose_name="Продукт",
+        verbose_name='Продукт',
         help_text='Выберете продукт'
     )
 
@@ -243,5 +243,5 @@ class ProductGallery(models.Model):
     cleanup_pre_delete.connect(sorl_delete)
 
     class Meta:
-        verbose_name = "Изображение продукта"
-        verbose_name_plural = "Изображения продуктов"
+        verbose_name = 'Изображение продукта'
+        verbose_name_plural = 'Изображения продуктов'

@@ -6,21 +6,24 @@ from product.models import Product, Type
 
 class StaticViewSitemap(sitemaps.Sitemap):
     priority = 1
-    changefreq = "daily"
 
     def items(self):
         return [
-            'homepage:index',
-            'product:product_list',
+            ('homepage:index', 'monthly'),
+            ('product:product_list', 'daily'),
+            ('about:index', 'yearly'),
         ]
 
     def location(self, item):
-        return reverse(item)
+        return reverse(item[0])
+
+    def changefreq(self, item):
+        return item[1]
 
 
 class TypeSitemap(sitemaps.Sitemap):
     priority = 0.5
-    changefreq = "daily"
+    changefreq = 'daily'
 
     def items(self):
         return Type.objects.all()
@@ -31,7 +34,7 @@ class TypeSitemap(sitemaps.Sitemap):
 
 class ProductSitemap(sitemaps.Sitemap):
     priority = 0.5
-    changefreq = "daily"
+    changefreq = 'daily'
 
     def items(self):
         return Product.objects.all()

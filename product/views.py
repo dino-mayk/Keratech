@@ -30,7 +30,7 @@ def product_list(request):
 
     protocol = request.scheme
     host = request.get_host()
-    base_url = f"{protocol}://{host}"
+    base_url = f'{protocol}://{host}'
 
     meta = Meta(
         title='Каталог огнеупорных и изоляционных материалов КЕРАТЕХ',
