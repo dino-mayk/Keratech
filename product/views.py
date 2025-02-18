@@ -61,11 +61,17 @@ def product_list(request):
         }
     )
 
-    products = Product.objects.all().prefetch_related('productgallery_set')
+    types = Type.objects.all().order_by('priority').prefetch_related(
+        Prefetch(
+            'products',
+            queryset=Product.objects.all().order_by('priority'),
+            to_attr='sorted_products',
+        )
+    )
 
     context = {
         'meta': meta,
-        'products': products,
+        'types': types,
     }
 
     return render(request, template_name, context)

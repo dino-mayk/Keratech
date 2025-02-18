@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
@@ -19,9 +20,11 @@ class CarouselImg(models.Model):
         validators=[validate_image_aspect_ratio_func],
     )
     priority = models.PositiveSmallIntegerField(
-        default=0,
+        default=1,
         verbose_name='Приоритет',
-        help_text='Чем меньше число, тем выше приоритет (0 - самый высокий)',
+        help_text='Чем меньше число, тем выше приоритет \
+                (минимальное значение — 1)',
+        validators=[MinValueValidator(1)],
     )
 
     def __str__(self):

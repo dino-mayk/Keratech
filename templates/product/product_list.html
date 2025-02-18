@@ -3,14 +3,16 @@
 {% block content %}
 
 <div class="row justify-content-center p-5">
-    {% regroup products by type as product_list %}
-
-    {% if product_list %}
-        {% for product_type in product_list %}
-            <h1 class="text-center">{{ product_type.grouper }}</h1>
-            {% for product in product_type.list %}
-                {% include 'includes/product_card.html' with product=product images=product.productgallery_set.all product_id=product.id %}
-            {% endfor %}
+    {% if types %}
+        {% for type in types %}
+            <h1 class="text-center">{{ type.title }}</h1>
+            {% if type.sorted_products %}
+                {% for product in type.sorted_products %}
+                    {% include 'includes/product_card.html' with product=product images=product.productgallery_set.all product_id=product.id %}
+                {% endfor %}
+            {% else %}
+                <h2 class="text-center">Нет продуктов в категории "{{ type.title }}"</h2>
+            {% endif %}
         {% endfor %}
     {% else %}
         <h1 class="text-center">На данный момент нет продукции</h1>
@@ -18,4 +20,3 @@
 </div>
 
 {% endblock content %}
-

@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -33,6 +34,13 @@ class Type(ModelMeta, models.Model):
         verbose_name='Изображение',
         help_text='Загрузите изображение',
         null=True,
+    )
+    priority = models.PositiveSmallIntegerField(
+        default=1,
+        verbose_name='Приоритет',
+        help_text='Чем меньше число, тем выше приоритет \
+                (минимальное значение — 1)',
+        validators=[MinValueValidator(1)],
     )
     pub_date = models.DateTimeField(
         'Дата публикации',
@@ -101,6 +109,7 @@ class Type(ModelMeta, models.Model):
     class Meta:
         verbose_name = 'Тип продукции'
         verbose_name_plural = 'Типы продукции'
+        ordering = ['priority']
 
 
 class Product(ModelMeta, models.Model):
@@ -130,8 +139,16 @@ class Product(ModelMeta, models.Model):
     type = models.ForeignKey(
         Type,
         on_delete=models.CASCADE,
+        related_name='products',
         verbose_name='Тип продукции',
         help_text='Выберете тип продукции'
+    )
+    priority = models.PositiveSmallIntegerField(
+        default=1,
+        verbose_name='Приоритет',
+        help_text='Чем меньше число, тем выше приоритет \
+                (минимальное значение — 1)',
+        validators=[MinValueValidator(1)],
     )
     pub_date = models.DateTimeField(
         'Дата публикации',
@@ -200,6 +217,7 @@ class Product(ModelMeta, models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+        ordering = ['priority']
 
 
 class ProductGallery(models.Model):
@@ -213,6 +231,13 @@ class ProductGallery(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Продукт',
         help_text='Выберете продукт'
+    )
+    priority = models.PositiveSmallIntegerField(
+        default=1,
+        verbose_name='Приоритет',
+        help_text='Чем меньше число, тем выше приоритет \
+                (минимальное значение — 1)',
+        validators=[MinValueValidator(1)],
     )
 
     def __str__(self):
@@ -245,3 +270,4 @@ class ProductGallery(models.Model):
     class Meta:
         verbose_name = 'Изображение продукта'
         verbose_name_plural = 'Изображения продуктов'
+        ordering = ['priority']
