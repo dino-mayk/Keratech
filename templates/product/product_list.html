@@ -5,7 +5,7 @@
 <div class="row justify-content-center p-5">
     {% if types %}
         {% for type in types %}
-            <h1 class="text-center">{{ type.title }}</h1>
+            <h2 class="text-center">{{ type.title }}</h2>
             {% if type.sorted_products %}
                 {% for product in type.sorted_products %}
                     {% include 'includes/product_card.html' with product=product images=product.productgallery_set.all product_id=product.id %}

@@ -8,19 +8,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-title" content="Кератех"/>
+    <meta name="msapplication-TileColor" content="#57a0c8">
+    <meta name="theme-color" content="#ffffff">
+    {% include "meta/meta.html" %}
+    <meta name="yandex-verification" content="d2080f46c09ba1ad"/>
+    <meta name="google-site-verification" content="j8Bt6Oo_08nqaTQv7Zk-luCsn1KLn1M9nvUA0u0Xgg4"/>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'apps/base.css' %}" rel="stylesheet">
     <link rel="icon" type="image/png" href="{% static 'favicon/favicon-48x48.png' %}" sizes="48x48"/>
     <link rel="icon" type="image/svg+xml" href="{% static 'favicon/favicon.svg' %}"/>
-    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}" />
-    <meta name="apple-mobile-web-app-title" content="Кератех" />
-    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}" />
-    <meta name="msapplication-TileColor" content="#57a0c8">
-    <meta name="theme-color" content="#ffffff">
-    {% include "meta/meta.html" %}
-    <meta name="yandex-verification" content="d2080f46c09ba1ad" />
-    <meta name="google-site-verification" content="j8Bt6Oo_08nqaTQv7Zk-luCsn1KLn1M9nvUA0u0Xgg4" />
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}"/>
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}"/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XFFR0PPBPP"></script>
     <script>
@@ -60,6 +60,6 @@
         {% block content %}{% endblock %}
     </main>
     {% include "includes/footer.html" %}
-<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
