@@ -8,7 +8,7 @@ from slugify import slugify
 from sorl.thumbnail import delete, get_thumbnail
 
 
-class BaseModel(models.Model):
+class BaseProductModel(models.Model):
     priority = models.PositiveSmallIntegerField(
         default=1,
         verbose_name='Приоритет',
@@ -22,7 +22,7 @@ class BaseModel(models.Model):
         abstract = True
 
 
-class BaseImgModel(models.Model):
+class BaseProductImgModel(models.Model):
     photo = models.ImageField(
         upload_to='uploads/img/preview/%Y/%m',
         verbose_name='Изображение',
@@ -58,7 +58,7 @@ class BaseImgModel(models.Model):
         abstract = True
 
 
-class BaseMetaModel(models.Model):
+class BaseProductMetaModel(models.Model):
     title = models.CharField(
         'Название',
         max_length=150,
