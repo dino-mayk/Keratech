@@ -9,6 +9,17 @@ def validate_image_aspect_ratio_func(image):
 
 
 class CarouselImg(BaseModel, BaseImgModel, models.Model):
+    title = models.CharField(
+        'Заголовок слайда',
+        default='Заголовок слайда',
+        max_length=150,
+    )
+    description = models.TextField(
+        verbose_name='Описание',
+        default='Описание',
+        help_text='Введите ваше описание слайда',
+    )
+
     def __str__(self):
         return self.photo.url
 

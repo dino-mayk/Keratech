@@ -4,11 +4,12 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
+from PIL import Image
 from slugify import slugify
 from sorl.thumbnail import delete, get_thumbnail
 
 
-class BaseProductModel(models.Model):
+class BaseModel(models.Model):
     priority = models.PositiveSmallIntegerField(
         default=1,
         verbose_name='Приоритет',
@@ -22,7 +23,7 @@ class BaseProductModel(models.Model):
         abstract = True
 
 
-class BaseProductImgModel(models.Model):
+class BaseImgModel(models.Model):
     photo = models.ImageField(
         upload_to='uploads/img/preview/%Y/%m',
         verbose_name='Изображение',
@@ -30,27 +31,47 @@ class BaseProductImgModel(models.Model):
         null=True,
     )
 
+    MAX_WIDTH = 1920
+    MAX_HEIGHT = 1080
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if self.photo:
+            img_path = self.photo.path
+
+            with Image.open(img_path) as img:
+                width, height = img.size
+
+                if width > self.MAX_WIDTH or height > self.MAX_HEIGHT:
+                    output_size = (self.MAX_WIDTH, self.MAX_HEIGHT)
+                    img.thumbnail(output_size, Image.LANCZOS)
+
+                    img.save(img_path, format=img.format, quality=85)
+
     @property
     def get_img(self):
-        return get_thumbnail(
-            self.photo,
-            '300x300',
-            crop='center',
-            quality=51,
-        )
+        if self.photo:
+            return get_thumbnail(
+                self.photo,
+                '300x300',
+                crop='center',
+                quality=51,
+            )
+        return None
 
     def img_tmb(self):
-        if self.photo:
+        if self.photo and self.get_img:
             return mark_safe(
-                f'<img src="{self.get_img.url}">'
+                f'<img src="{self.get_img.url}" alt="Thumbnail">'
             )
         return 'Нет изображений'
 
     img_tmb.short_description = 'Изображение'
     img_tmb.allow_tags = True
 
-    def sorl_delete(**kwargs):
-        delete(kwargs['file'])
+    def sorl_delete(sender, file, **kwargs):
+        delete(file)
 
     cleanup_pre_delete.connect(sorl_delete)
 
@@ -58,7 +79,7 @@ class BaseProductImgModel(models.Model):
         abstract = True
 
 
-class BaseProductMetaModel(models.Model):
+class BaseMetaModel(models.Model):
     title = models.CharField(
         'Название',
         max_length=150,
@@ -115,3 +136,17 @@ class BaseProductMetaModel(models.Model):
 
     class Meta:
         abstract = True
+
+
+class SingletonModel(models.Model):
+    class Meta:
+        abstract = True
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def load(cls):
+        obj, created = cls.objects.get_or_create(pk=1)
+        return obj

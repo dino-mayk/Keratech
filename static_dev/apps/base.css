@@ -4,6 +4,10 @@ body {
     min-height: 100vh;
 }
 
+.messages {
+    background-color: #5cb3e2;
+}
+
 main {
     flex: 1;
     background-color: white;

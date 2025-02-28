@@ -38,7 +38,9 @@ INSTALLED_APPS = [
 
     'homepage',
     'product',
+    'feedback',
     'about',
+    'policy',
     'core',
 
     'sorl.thumbnail',

@@ -1,7 +1,7 @@
 from django.urls import path
 
-from core import views
+from .views import robots_txt
 
 urlpatterns = [
-    path('robots.txt', views.robots_txt, name='robots_txt'),
+    path('robots.txt', robots_txt, name='robots_txt'),
 ]

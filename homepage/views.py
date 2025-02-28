@@ -53,8 +53,8 @@ def index(request):
 
     context = {
         'meta': meta,
-        'types': types,
         'carousel_imgs': carousel_imgs,
+        'types': types,
     }
 
     return render(request, template_name, context)

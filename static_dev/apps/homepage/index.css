@@ -4,7 +4,49 @@
   width: 100%;
 }
 
-.featurette h1 {
+.carousel-caption {
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.carousel-caption h2 {
+  font-size: 2.5rem;
+}
+
+.carousel-caption p {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .carousel-item,
+  .carousel-item img {
+    max-height: 500px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item,
+  .carousel-item img {
+    max-height: 300px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1.2rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem;
+  }
+}
+
+.featurette h2 {
   font-size: 20px;
 }
 

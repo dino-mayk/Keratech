@@ -1,0 +1,18 @@
+<form method="POST" action="{% url 'feedback:create' %}" class="mt-4">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Имя:</label>
+      <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Сообщение:</label>
+      <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Отправить</button>
+    </div>
+</form>

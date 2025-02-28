@@ -44,8 +44,18 @@ urlpatterns = [
         name='product',
     ),
     path(
+        'feedback/',
+        include('feedback.urls'),
+        name='feedback',
+    ),
+    path(
         'about/', include('about.urls'),
         name='about',
+    ),
+    path(
+        'policy/',
+        include('policy.urls'),
+        name='policy',
     ),
 
     path(
