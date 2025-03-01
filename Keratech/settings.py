@@ -21,6 +21,12 @@ PORT = os.environ.get('PORT')
 
 DOMEN = os.environ.get('DOMEN')
 
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+
 DJEYM_YMAPS_API_KEY = os.environ.get('DJEYM_YMAPS_API_KEY')
 
 
@@ -259,9 +265,6 @@ META_SITE_DOMAIN = DOMEN
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.hosting.reg.ru'
-EMAIL_PORT = 465
+
+
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'info@keratekh.ru'
-EMAIL_HOST_PASSWORD = 'Y.gB,3DeK)hv#}2'
-DEFAULT_FROM_EMAIL = 'info@keratekh.ru'
