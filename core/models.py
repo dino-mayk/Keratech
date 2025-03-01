@@ -2,8 +2,10 @@ from bs4 import BeautifulSoup
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django_cleanup.signals import cleanup_pre_delete
+from meta.models import ModelMeta
 from PIL import Image
 from slugify import slugify
 from sorl.thumbnail import delete, get_thumbnail
@@ -79,13 +81,15 @@ class BaseImgModel(models.Model):
         abstract = True
 
 
-class BaseMetaModel(models.Model):
+class BaseMetaModel(models.Model, ModelMeta):
     title = models.CharField(
         'Название',
+        default='Название',
         max_length=150,
     )
-    description = RichTextUploadingField(
-        verbose_name='Описание',
+    content = RichTextUploadingField(
+        'Описание',
+        default='Описание',
         help_text='Введите ваше описание',
         blank=True,
         null=True,
@@ -98,7 +102,7 @@ class BaseMetaModel(models.Model):
     )
     pub_date = models.DateTimeField(
         'Дата публикации',
-        auto_now_add=True,
+        default=timezone.now,
     )
 
     _metadata = {
@@ -115,8 +119,8 @@ class BaseMetaModel(models.Model):
         return self.photo.url
 
     def get_cleaned_description(self, max_length=160):
-        if self.description:
-            soup = BeautifulSoup(self.description, "html.parser")
+        if self.content:
+            soup = BeautifulSoup(self.content, "html.parser")
             text = soup.get_text().strip()
             if len(text) > max_length:
                 return f"{text[:max_length]}..."
@@ -136,17 +140,3 @@ class BaseMetaModel(models.Model):
 
     class Meta:
         abstract = True
-
-
-class SingletonModel(models.Model):
-    class Meta:
-        abstract = True
-
-    def save(self, *args, **kwargs):
-        self.pk = 1
-        super().save(*args, **kwargs)
-
-    @classmethod
-    def load(cls):
-        obj, created = cls.objects.get_or_create(pk=1)
-        return obj

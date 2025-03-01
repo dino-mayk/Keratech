@@ -2,5 +2,14 @@
 
 
 <footer class="py-3 my-4">
-    <p class="text-center text-body-secondary border-top py-3">© {% now "Y" %} ООО Кератех</p>
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      {% if pages %}
+        {% for page in pages %}
+          <li class="nav-item"><a href="{% url 'page:page_detail' page.slug %}" class="nav-link px-2 text-body-secondary">{{ page.title }}</a></li>
+        {% endfor %}
+      {% else %}
+        <li class="nav-item px-2 text-body-secondary">На данный момент нет дополнительных страниц</li>
+      {% endif %}
+    </ul>
+    <p class="text-center text-body-secondary py-3">© {% now "Y" %} ООО Кератех</p>
 </footer>

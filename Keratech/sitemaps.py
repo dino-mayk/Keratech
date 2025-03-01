@@ -1,6 +1,7 @@
 from django.contrib import sitemaps
 from django.urls import reverse
 
+from page.models import Page
 from product.models import Product, Type
 
 
@@ -38,6 +39,17 @@ class ProductSitemap(sitemaps.Sitemap):
 
     def items(self):
         return Product.objects.all()
+
+    def lastmod(self, obj):
+        return obj.pub_date
+
+
+class PageSitemap(sitemaps.Sitemap):
+    priority = 1
+    changefreq = 'monthly'
+
+    def items(self):
+        return Page.objects.all()
 
     def lastmod(self, obj):
         return obj.pub_date

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'product',
     'feedback',
     'about',
-    'policy',
+    'page',
     'core',
 
     'sorl.thumbnail',
@@ -85,6 +85,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'page.context_processors.pages_context_processor',
             ],
         },
     },
@@ -254,3 +256,12 @@ META_USE_OG_PROPERTIES = True
 META_DEFAULT_IMAGE = 'https://keratekh.ru/static/favicon/logo_text.svg'
 META_SITE_PROTOCOL = 'http' if DEBUG else 'https'
 META_SITE_DOMAIN = DOMEN
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.hosting.reg.ru'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'info@keratekh.ru'
+EMAIL_HOST_PASSWORD = 'Y.gB,3DeK)hv#}2'
+DEFAULT_FROM_EMAIL = 'info@keratekh.ru'

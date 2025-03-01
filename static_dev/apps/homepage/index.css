@@ -1,7 +1,17 @@
 .carousel-item,
 .carousel-item img {
-  max-height: 825px;
+  max-height: 750px;
   width: 100%;
+}
+
+.carousel-caption.top {
+  top: 20px;
+  bottom: auto;
+}
+
+.carousel-caption.bottom {
+  top: auto;
+  bottom: 20px;
 }
 
 .carousel-caption {
@@ -44,6 +54,10 @@
   .carousel-caption p {
     font-size: 1rem;
   }
+}
+
+h1 {
+  font-size: 30px;
 }
 
 .featurette h2 {

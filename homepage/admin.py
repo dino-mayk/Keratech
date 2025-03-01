@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from homepage.models import CarouselImg
+from .models import CarouselImg
 
 
 @admin.register(CarouselImg)

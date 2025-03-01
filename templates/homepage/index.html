@@ -19,7 +19,7 @@
       {% if carousel_imgs %}
       <div class="carousel-item active">
         <img src="{{ carousel_imgs.0.photo.url }}" alt="Фото организации">
-        <div class="carousel-caption">
+        <div class="carousel-caption {{ carousel_imgs.0.text_position|lower }}">
           <h2>{{ carousel_imgs.0.title }}</h2>
           <p>{{ carousel_imgs.0.description }}</p>
         </div>
@@ -28,7 +28,7 @@
       {% for carousel_img in carousel_imgs|slice:"1:" %}
         <div class="carousel-item">
           <img src="{{ carousel_img.photo.url }}" alt="Фото организации">
-          <div class="carousel-caption">
+          <div class="carousel-caption {{ carousel_img.text_position|lower }}">
             <h2>{{ carousel_img.title }}</h2>
             <p>{{ carousel_img.description }}</p>
           </div>
@@ -50,9 +50,8 @@
     {% endif %}
 </div>
 
-<h1 class="text-center py-3">Продукция от Кератех:</h1>
-
-<div class="container p-5 text">
+<div class="container">
+  <h1 class="py-5">Продукция от Кератех:</h1>
   {% if types %}
     {% for type in types %}
       <div class="row featurette">
@@ -62,7 +61,7 @@
           <div class="col-md-7">
         {% endif %}
             <h2 class="featurette-heading fw-normal lh-1">{{ type.title }}</h2>
-            <p class="lead">{{ type.description|safe}}</p>
+            <p class="lead">{{ type.content|safe}}</p>
           </div>
         
         {% if forloop.counter|divisibleby:2 %}

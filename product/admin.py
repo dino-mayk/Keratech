@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from product.models import Product, ProductGallery, Type
+from .models import Product, ProductGallery, Type
 
 
 @admin.register(Type)

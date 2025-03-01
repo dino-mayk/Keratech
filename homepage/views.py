@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from meta.views import Meta
 
-from homepage.models import CarouselImg
 from product.models import Type
+
+from .models import CarouselImg
 
 
 def index(request):

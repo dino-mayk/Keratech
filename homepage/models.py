@@ -19,6 +19,16 @@ class CarouselImg(BaseModel, BaseImgModel, models.Model):
         default='Описание',
         help_text='Введите ваше описание слайда',
     )
+    TEXT_POSITION_CHOICES = [
+        ('TOP', 'Вверху'),
+        ('BOTTOM', 'Внизу'),
+    ]
+    text_position = models.CharField(
+        'Расположение текста',
+        max_length=10,
+        choices=TEXT_POSITION_CHOICES,
+        default='BOTTOM',
+    )
 
     def __str__(self):
         return self.photo.url

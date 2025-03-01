@@ -4,12 +4,14 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
-from .sitemaps import ProductSitemap, StaticViewSitemap, TypeSitemap
+from .sitemaps import (PageSitemap, ProductSitemap, StaticViewSitemap,
+                       TypeSitemap)
 
 sitemaps = {
     'static': StaticViewSitemap,
     'types': TypeSitemap,
     'products': ProductSitemap,
+    'pages': PageSitemap,
 }
 
 handler404 = 'core.views.error_404'
@@ -53,9 +55,9 @@ urlpatterns = [
         name='about',
     ),
     path(
-        'policy/',
-        include('policy.urls'),
-        name='policy',
+        '',
+        include('page.urls'),
+        name='page',
     ),
 
     path(

@@ -2,7 +2,7 @@ from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404, render
 from meta.views import Meta
 
-from product.models import Product, ProductGallery, Type
+from .models import Product, ProductGallery, Type
 
 
 def type_detail(request, slug):

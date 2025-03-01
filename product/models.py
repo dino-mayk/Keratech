@@ -1,14 +1,10 @@
 from django.db import models
 from django.urls import reverse
-from meta.models import ModelMeta
 
 from core.models import BaseImgModel, BaseMetaModel, BaseModel
 
 
-class Type(
-    BaseModel, BaseImgModel, BaseMetaModel, ModelMeta,
-    models.Model,
-):
+class Type(BaseModel, BaseImgModel, BaseMetaModel, models.Model):
     def get_absolute_url(self):
         return reverse('product:type_detail', args=[self.slug])
 
@@ -17,10 +13,7 @@ class Type(
         verbose_name_plural = 'Типы продукции'
 
 
-class Product(
-    BaseModel, BaseImgModel, BaseMetaModel, ModelMeta,
-    models.Model,
-):
+class Product(BaseModel, BaseImgModel, BaseMetaModel, models.Model):
     type = models.ForeignKey(
         Type,
         on_delete=models.CASCADE,
